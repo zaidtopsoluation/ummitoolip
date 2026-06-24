@@ -63,6 +63,8 @@ body {
 }
 
 
+
+
 /* The Soil Pot & Dirt - Lifted by 20px to prevent card overflow clipping */
 .flower-pot {
   width: 140px;
@@ -104,9 +106,11 @@ body {
   z-index: 9;
 }
 
-/* Stem Grow Container (Handles growth height animation) */
-.stem-grow-container {
+/* Tulip Stem Shape (Handles both grow and wind/sway animations directly) */
+/* Stem Sway Container (Holds static dimensions and handles physics rotation) */
+.stem-sway-container {
   width: 8px;
+  height: 280px;
   position: absolute;
   bottom: 105px;
   left: calc(50% - 4px);
@@ -114,20 +118,7 @@ body {
   z-index: 3;
 }
 
-.grow-stem {
-  animation: grow-stem-anim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes grow-stem-anim {
-  from {
-    height: 0px;
-  }
-  to {
-    height: 280px;
-  }
-}
-
-/* Tulip Stem Shape (Handles sway/wind animation) */
+/* Tulip Stem Shape (Handles growth via scaleY) */
 .tulip-stem {
   width: 100%;
   height: 100%;
@@ -136,6 +127,21 @@ body {
   transform-origin: bottom center;
   position: relative;
 }
+
+.grow-stem {
+  animation: grow-stem-scale-anim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes grow-stem-scale-anim {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+
 
 /* Elongated Leaves - Nested inside the stem */
 .tulip-leaf {
@@ -220,8 +226,10 @@ body {
   }
 }
 
-/* Blossom Grow Container (Handles scale/bud animation) */
-.blossom-grow-container {
+
+
+/* Blossom Sway Container (Handles wind sway) */
+.blossom-sway-container {
   width: 80px;
   height: 96px;
   position: absolute;
@@ -229,6 +237,14 @@ body {
   left: calc(50% - 40px); /* Centers blossom on stem */
   transform-origin: bottom center;
   z-index: 5;
+}
+
+/* Blossom Shape (Handles grow scale animation) */
+.tulip-blossom {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-origin: bottom center;
 }
 
 .grow-blossom {
@@ -250,13 +266,7 @@ body {
   }
 }
 
-/* Blossom Shape (Handles secondary swaying lag) */
-.tulip-blossom {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-origin: bottom center;
-}
+
 
 /* Green Receptacle Base of the Flower Head */
 .tulip-receptacle {
@@ -430,6 +440,7 @@ body {
   }
 }
 
+
 /* Water Ripple Effect */
 .water-ripple {
   position: absolute;
@@ -564,3 +575,15 @@ body {
     opacity: 0.7;
   }
 }
+
+/* Shake animation for incorrect password */
+.animate-shake {
+  animation: shake-anim 0.5s ease-in-out;
+}
+
+@keyframes shake-anim {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
