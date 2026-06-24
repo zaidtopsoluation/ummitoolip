@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f0c1b;
+  --foreground: #f8fafc;
+  --tulip-color: #dc2626;
+  --tulip-color-light: #f87171;
+  --tulip-color-dark: #7f1d1d;
 }
 
+/* Custom Theme Config for Tailwind v4 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,15 +16,551 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: radial-gradient(circle at 50% 50%, #1a1635 0%, #080612 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui;
+  overflow-x: hidden;
+}
+
+/* Day Mode Background */
+.bg-day {
+  background: radial-gradient(circle at 50% 30%, #fef3c7 0%, #fde68a 35%, #e0f2fe 75%, #bae6fd 100%) !important;
+}
+
+/* Night Mode Background */
+.bg-night {
+  background: radial-gradient(circle at 50% 50%, #111827 0%, #030712 100%) !important;
+}
+
+/* Sunset Mode Background (Default) */
+.bg-sunset {
+  background: radial-gradient(circle at 50% 40%, #ff7e5f 0%, #feb47b 45%, #764ba2 80%, #0f0c1b 100%) !important;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(180, 83, 9, 0.15);
+}
+
+/* Tulip Garden Container */
+.tulip-garden {
+  position: relative;
+  width: 320px;
+  height: 480px;
+}
+
+
+/* The Soil Pot & Dirt - Lifted by 20px to prevent card overflow clipping */
+.flower-pot {
+  width: 140px;
+  height: 90px;
+  background: linear-gradient(135deg, #5c2c16 0%, #2c1205 100%);
+  clip-path: polygon(10% 0%, 90% 0%, 80% 100%, 20% 100%);
+  position: absolute;
+  bottom: 20px;
+  left: calc(50% - 70px);
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flower-pot:hover {
+  transform: scale(1.03);
+}
+
+.pot-rim {
+  width: 150px;
+  height: 16px;
+  background: linear-gradient(90deg, #78350f 0%, #5c2c16 50%, #2c1205 100%);
+  border-radius: 4px;
+  position: absolute;
+  bottom: 104px;
+  left: calc(50% - 75px);
+  z-index: 11;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.soil {
+  width: 132px;
+  height: 22px;
+  background: radial-gradient(ellipse at 50% 50%, #451a03 0%, #1a0800 100%);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100px;
+  left: calc(50% - 66px);
+  z-index: 9;
+}
+
+/* Stem Grow Container (Handles growth height animation) */
+.stem-grow-container {
+  width: 8px;
+  position: absolute;
+  bottom: 105px;
+  left: calc(50% - 4px);
+  transform-origin: bottom center;
+  z-index: 3;
+}
+
+.grow-stem {
+  animation: grow-stem-anim 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes grow-stem-anim {
+  from {
+    height: 0px;
+  }
+  to {
+    height: 280px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Tulip Stem Shape (Handles sway/wind animation) */
+.tulip-stem {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #4ade80, #15803d, #14532d);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  position: relative;
+}
+
+/* Elongated Leaves - Nested inside the stem */
+.tulip-leaf {
+  position: absolute;
+  background: linear-gradient(135deg, #34d399 0%, #15803d 50%, #064e3b 100%);
+  z-index: 4;
+  opacity: 0;
+  box-shadow: inset -2px -2px 10px rgba(0,0,0,0.1), 2px 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Leaf Midrib Vein */
+.tulip-leaf::after {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.tulip-leaf-left {
+  width: 70px;
+  height: 180px;
+  left: -66px;
+  bottom: 40px;
+  border-radius: 100% 0 90% 0 / 100% 0 50% 0;
+  transform-origin: bottom right;
+}
+
+.tulip-leaf-left::after {
+  width: 2px;
+  height: 90%;
+  top: 5%;
+  right: 25%;
+  border-radius: 100% 0 0 0;
+  transform: rotate(-12deg);
+}
+
+.grow-leaf-left {
+  animation: grow-leaf-left-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 0.8s forwards;
+}
+
+@keyframes grow-leaf-left-anim {
+  from {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(-12deg);
+    opacity: 1;
+  }
+}
+
+.tulip-leaf-right {
+  width: 62px;
+  height: 165px;
+  left: 4px; /* stem width is 8px, leaf right attaches at boundary */
+  bottom: 80px;
+  border-radius: 0 100% 0 90% / 0 100% 0 50%;
+  transform-origin: bottom left;
+}
+
+.tulip-leaf-right::after {
+  width: 2px;
+  height: 90%;
+  top: 5%;
+  left: 25%;
+  border-radius: 0 100% 0 0;
+  transform: rotate(12deg);
+}
+
+.grow-leaf-right {
+  animation: grow-leaf-right-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+@keyframes grow-leaf-right-anim {
+  from {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+/* Blossom Grow Container (Handles scale/bud animation) */
+.blossom-grow-container {
+  width: 80px;
+  height: 96px;
+  position: absolute;
+  top: -84px; /* Sits exactly on top of 280px stem with 12px overlap */
+  left: calc(50% - 40px); /* Centers blossom on stem */
+  transform-origin: bottom center;
+  z-index: 5;
+}
+
+.grow-blossom {
+  animation: grow-blossom-anim 2.2s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
+}
+
+@keyframes grow-blossom-anim {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.4);
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Blossom Shape (Handles secondary swaying lag) */
+.tulip-blossom {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-origin: bottom center;
+}
+
+/* Green Receptacle Base of the Flower Head */
+.tulip-receptacle {
+  width: 16px;
+  height: 12px;
+  background: linear-gradient(to bottom, #15803d, #22c55e);
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  bottom: -6px;
+  left: calc(50% - 8px);
+  z-index: 3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* 3D Volumetric Tulip Petals */
+.petal {
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: bottom center;
+}
+
+/* Inner Back Petals */
+.petal-back-left {
+  width: 46px;
+  height: 86px;
+  left: 8px;
+  background: radial-gradient(circle at 70% 30%, var(--tulip-color-dark) 20%, #600020 90%, #30000a 100%);
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  transform: rotate(-18deg) scale(0.9);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.open-back-left {
+  transform: rotate(-35deg) scale(0.95) translateX(-8px);
+}
+
+.petal-back-right {
+  width: 45px;
+  height: 86px;
+  right: 8px;
+  background: radial-gradient(circle at 30% 30%, var(--tulip-color-dark) 20%, #600020 90%, #30000a 100%);
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  transform: rotate(18deg) scale(0.9);
+  z-index: 2;
+  opacity: 0.85;
+}
+
+.open-back-right {
+  transform: rotate(35deg) scale(0.95) translateX(8px);
+}
+
+/* Center Petal */
+.petal-center {
+  width: 50px;
+  height: 92px;
+  left: 15px;
+  background: linear-gradient(to top, var(--tulip-color-dark) 0%, var(--tulip-color) 65%, var(--tulip-color-light) 100%);
+  border-radius: 50% 50% 50% 50% / 80% 80% 20% 20%;
+  transform: scale(0.95);
+  z-index: 4;
+}
+
+.open-center {
+  transform: scale(1.05) translateY(-6px);
+}
+
+/* Left Petal (With Satin lighting) */
+.petal-left {
+  width: 55px;
+  height: 90px;
+  left: 3px;
+  background: radial-gradient(circle at 75% 35%, var(--tulip-color-light) 0%, var(--tulip-color) 45%, var(--tulip-color-dark) 85%, #600022 100%);
+  border-radius: 85% 20% 50% 50% / 85% 30% 70% 15%;
+  transform: rotate(-10deg);
+  z-index: 6;
+  box-shadow: -3px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.open-left {
+  transform: rotate(-24deg) translateX(-7px) rotateY(-10deg);
+}
+
+/* Right Petal (With Satin lighting) */
+.petal-right {
+  width: 55px;
+  height: 90px;
+  right: 3px;
+  background: radial-gradient(circle at 25% 35%, var(--tulip-color-light) 0%, var(--tulip-color) 45%, var(--tulip-color-dark) 85%, #600022 100%);
+  border-radius: 20% 85% 50% 50% / 30% 85% 15% 70%;
+  transform: rotate(10deg);
+  z-index: 6;
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+.open-right {
+  transform: rotate(24deg) translateX(7px) rotateY(10deg);
+}
+
+/* Front Petal Overlay */
+.petal-front {
+  width: 52px;
+  height: 82px;
+  left: 14px;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 25%, var(--tulip-color-light) 0%, var(--tulip-color) 60%, var(--tulip-color-dark) 100%);
+  border-radius: 50% 50% 45% 45% / 72% 72% 28% 28%;
+  z-index: 8;
+  transform: scale(0.95);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.open-front {
+  transform: scale(1) translateY(4px) rotateX(16deg);
+}
+
+/* Coordinated Sway / Wind Animations */
+.wind-sway-gentle {
+  animation: wind-sway-gentle-anim 6s ease-in-out infinite alternate;
+}
+
+@keyframes wind-sway-gentle-anim {
+  0% {
+    transform: rotate(-1.5deg);
+  }
+  100% {
+    transform: rotate(2.5deg);
+  }
+}
+
+.wind-sway-strong {
+  animation: wind-sway-strong-anim 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes wind-sway-strong-anim {
+  0% {
+    transform: rotate(-3.5deg);
+  }
+  100% {
+    transform: rotate(7.5deg);
+  }
+}
+
+/* Secondary lag/motion on the blossom head */
+.wind-sway-blossom-gentle {
+  animation: blossom-sway-secondary-gentle-anim 6s ease-in-out infinite alternate;
+}
+
+@keyframes blossom-sway-secondary-gentle-anim {
+  0% {
+    transform: rotate(0.8deg);
+  }
+  100% {
+    transform: rotate(-1.2deg);
+  }
+}
+
+.wind-sway-blossom-strong {
+  animation: blossom-sway-secondary-strong-anim 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes blossom-sway-secondary-strong-anim {
+  0% {
+    transform: rotate(1.8deg) translateX(2px);
+  }
+  100% {
+    transform: rotate(-3deg) translateX(-2px);
+  }
+}
+
+/* Water Ripple Effect */
+.water-ripple {
+  position: absolute;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  animation: water-ripple-anim 1.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+  pointer-events: none;
+  z-index: 12;
+}
+
+@keyframes water-ripple-anim {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    width: 250px;
+    height: 60px;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Rain Particle System */
+.rain-particle {
+  position: absolute;
+  width: 2px;
+  height: 18px;
+  background: linear-gradient(transparent, #38bdf8);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: rain-fall-anim 1.2s linear infinite;
+  z-index: 20;
+}
+
+@keyframes rain-fall-anim {
+  0% {
+    transform: translateY(-50px) rotate(12deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(450px) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+/* Sparkling pollen */
+.sparkle-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fde047;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fef08a, 0 0 20px #fde047;
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkle-float-anim 3s ease-out infinite;
+  z-index: 15;
+}
+
+@keyframes sparkle-float-anim {
+  0% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Custom Tooltip Trigger Highlights */
+.toolip-trigger {
+  cursor: pointer;
+  position: relative;
+}
+
+.toolip-trigger::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.toolip-trigger:hover::after {
+  opacity: 1;
+}
+
+/* Glow indicators for guiding user interaction */
+.glow-indicator {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: pulse-ring 2s infinite;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.95;
+  }
+  100% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
 }
