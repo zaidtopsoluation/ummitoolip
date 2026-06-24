@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-// Tulip color palette options (with Velvet Rose as rich red matching the user's photo)
+// Tulip color palette options
 const TULIP_COLORS = [
   {
     id: "red",
@@ -46,7 +46,95 @@ const TULIP_COLORS = [
   },
 ];
 
-// Interactive Tulip Parts with detailed facts (The "Toolips")
+// Sunflower color palette options
+const SUNFLOWER_COLORS = [
+  {
+    id: "gold",
+    name: "Amber Gold",
+    main: "#f59e0b",
+    light: "#fef08a",
+    dark: "#78350f",
+    description: "Classic golden yellow sunflowers represent warmth, adoration, and longevity.",
+  },
+  {
+    id: "bronze",
+    name: "Autumn Bronze",
+    main: "#b45309",
+    light: "#f59e0b",
+    dark: "#451a03",
+    description: "Rich terracotta and bronze shades represent harvest, strength, and grounding.",
+  },
+  {
+    id: "lemon",
+    name: "Lemon Ice",
+    main: "#eab308",
+    light: "#fef9c3",
+    dark: "#713f12",
+    description: "Pale primrose yellow represents fresh energy, cheerfulness, and lightheartedness.",
+  },
+  {
+    id: "burgundy",
+    name: "Velvet Wine",
+    main: "#991b1b",
+    light: "#f87171",
+    dark: "#450a0a",
+    description: "Rare deep red/burgundy sunflowers symbolize mystery, passion, and unique beauty.",
+  },
+  {
+    id: "cream",
+    name: "Vanilla Cream",
+    main: "#fef08a",
+    light: "#ffffff",
+    dark: "#78350f",
+    description: "Soft off-white and cream petals represent peace, gratitude, and purity.",
+  },
+];
+
+// Rose color palette options
+const ROSE_COLORS = [
+  {
+    id: "rose-red",
+    name: "Classic Crimson",
+    main: "#dc2626",
+    light: "#f87171",
+    dark: "#7f1d1d",
+    description: "Deep red roses represent love, romance, and beautiful passion.",
+  },
+  {
+    id: "rose-pink",
+    name: "Blushing Pink",
+    main: "#ec4899",
+    light: "#fbcfe8",
+    dark: "#9d174d",
+    description: "Gentle pink roses represent gratitude, grace, admiration, and joy.",
+  },
+  {
+    id: "rose-white",
+    name: "Pure Alabaster",
+    main: "#f1f5f9",
+    light: "#ffffff",
+    dark: "#475569",
+    description: "White roses represent innocence, purity, spirituality, and new beginnings.",
+  },
+  {
+    id: "rose-yellow",
+    name: "Golden Joy",
+    main: "#eab308",
+    light: "#fef08a",
+    dark: "#854d0e",
+    description: "Yellow roses represent warm friendship, caring, and welcoming thoughts.",
+  },
+  {
+    id: "rose-coral",
+    name: "Sunset Coral",
+    main: "#f97316",
+    light: "#ffedd5",
+    dark: "#9a3412",
+    description: "Coral orange roses represent desire, excitement, and fierce enthusiasm.",
+  },
+];
+
+// Interactive Tulip Parts
 const TULIP_PARTS = {
   blossom: {
     id: "blossom",
@@ -82,6 +170,78 @@ const TULIP_PARTS = {
   },
 };
 
+// Interactive Sunflower Parts
+const SUNFLOWER_PARTS = {
+  blossom: {
+    id: "blossom",
+    name: "The Seed Disk & Ray Petals",
+    emoji: "🌻",
+    tagline: "A composite flower head made of thousands of tiny flowers.",
+    fact: "The center disk of a sunflower is actually made of thousands of tiny individual flowers called disk florets, which mature into sunflower seeds. The bright yellow outer petals are ray florets.",
+    didYouKnow: "The pattern of seeds in a sunflower disk follows the Fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34...), providing the most efficient packing of seeds possible!",
+  },
+  leaves: {
+    id: "leaves",
+    name: "The Broad Leaves",
+    emoji: "🍃",
+    tagline: "Large, rough, sun-tracking collectors.",
+    fact: "Sunflower leaves are heart-shaped (cordate), rough-textured, and grow alternately along the thick stem to capture maximum light for photosynthesis.",
+    didYouKnow: "Before blooming, young sunflowers track the sun from east to west every day in a process called heliotropism, resetting back to the east at night!",
+  },
+  stem: {
+    id: "stem",
+    name: "The Giant Stem",
+    emoji: "🌱",
+    tagline: "A thick, fibrous support beam.",
+    fact: "Sunflower stems are exceptionally thick, hairy, and fibrous. They must support the weight of a massive flower head that can hold over 2,000 seeds.",
+    didYouKnow: "The tallest sunflower ever recorded grew to a height of 30 feet and 1 inch (9.17 meters) in Germany!",
+  },
+  pot: {
+    id: "pot",
+    name: "The Root & Soil",
+    emoji: "🪵",
+    tagline: "A deep root anchor.",
+    fact: "Sunflowers have a strong, deep taproot system that can reach up to 10 feet (3 meters) underground, allowing them to pull water and nutrients from deep soils.",
+    didYouKnow: "Sunflowers are hyperaccumulators—they can extract toxic heavy metals and radiation from the soil. They were planted to clean up Chernobyl and Fukushima!",
+  },
+};
+
+// Interactive Rose Parts
+const ROSE_PARTS = {
+  blossom: {
+    id: "blossom",
+    name: "The Rose Bloom",
+    emoji: "🌹",
+    tagline: "A spiral of overlapping velvet petals.",
+    fact: "Rose petals grow in a spiral sequence following the Golden Ratio (approximately 137.5 degrees). This ensures each petal gets the maximum amount of sunlight and dew.",
+    didYouKnow: "All roses are edible! Their petals are often used to make rose water, syrups, and jellies, and they have a sweet, floral flavor.",
+  },
+  leaves: {
+    id: "leaves",
+    name: "Serrated Foliage",
+    emoji: "🍃",
+    tagline: "Glossy green leaflets with saw-like edges.",
+    fact: "Rose leaves are pinnately compound, meaning each leaf is divided into multiple small leaflets arranged along a central stalk, featuring sharp serrated edges.",
+    didYouKnow: "A rose leaf extract is rich in antioxidants and is often used in traditional skincare to soothe irritation.",
+  },
+  stem: {
+    id: "stem",
+    name: "The Thorny Stem",
+    emoji: "🌱",
+    tagline: "A defensive stem lined with prickles.",
+    fact: "What we call rose 'thorns' are botanically 'prickles'—extensions of the stem's outer layer (epidermis), unlike true thorns which are modified branches.",
+    didYouKnow: "Prickles help wild roses climb over other vegetation by hooking onto branches, in addition to deterring hungry herbivores!",
+  },
+  pot: {
+    id: "pot",
+    name: "The Root & Soil",
+    emoji: "🪵",
+    tagline: "Sturdy anchorage for a woody shrub.",
+    fact: "Roses develop a woody, deep root system that prefers well-drained, nutrient-rich soil. They require regular deep watering to keep their root crown healthy.",
+    didYouKnow: "The oldest living rose bush in the world is estimated to be 1,000 years old! It grows on the wall of Hildesheim Cathedral in Germany.",
+  },
+};
+
 interface Particle {
   id: number;
   left: string;
@@ -108,9 +268,10 @@ interface BouquetTulipProps {
   windClass: string;
   blossomWindClass: string;
   activeColor: typeof TULIP_COLORS[0];
+  bottomOffset?: string;
 }
 
-// Reusable Bouquet Tulip Component for clean rendering of secondary flowers
+// Reusable Bouquet Tulip Component
 function BouquetTulip({
   leftOffset,
   rotation,
@@ -121,6 +282,7 @@ function BouquetTulip({
   windClass,
   blossomWindClass,
   activeColor,
+  bottomOffset = "105px",
 }: BouquetTulipProps) {
   const bouquetColor = TULIP_COLORS[(TULIP_COLORS.findIndex((c) => c.id === activeColor.id) + colorOffset) % TULIP_COLORS.length];
   
@@ -129,43 +291,293 @@ function BouquetTulip({
       className={`stem-sway-container ${windClass}`}
       style={{
         position: "absolute",
-        bottom: "105px",
+        bottom: bottomOffset,
         left: leftOffset,
         transformOrigin: "bottom center",
         zIndex: zIndex,
-        transform: `scale(${scale}) rotate(${rotation})`,
       }}
     >
-      <div 
-        className="tulip-stem grow-stem"
+      <div
         style={{
-          // @ts-expect-error custom property passing
-          "--tulip-color": bouquetColor.main,
-          "--tulip-color-light": bouquetColor.light,
-          "--tulip-color-dark": bouquetColor.dark,
+          width: "100%",
+          height: "100%",
+          transformOrigin: "bottom center",
+          transform: `scale(${scale}) rotate(${rotation})`,
         }}
       >
-        <div className="tulip-leaf tulip-leaf-left grow-leaf-left" />
-        <div className="tulip-leaf tulip-leaf-right grow-leaf-right" />
-        
         <div 
-          className={`blossom-sway-container ${blossomWindClass}`}
+          className="tulip-stem grow-stem"
           style={{
-            position: "absolute",
-            top: "-84px",
-            left: "calc(50% - 40px)",
-            transformOrigin: "bottom center",
-            zIndex: 5,
+            // @ts-expect-error custom property passing
+            "--tulip-color": bouquetColor.main,
+            "--tulip-color-light": bouquetColor.light,
+            "--tulip-color-dark": bouquetColor.dark,
           }}
         >
-          <div className="tulip-blossom grow-blossom">
-            <div className="tulip-receptacle" />
-            <div className={`petal petal-back-left ${isBlooming ? "open-back-left" : ""}`} />
-            <div className={`petal petal-back-right ${isBlooming ? "open-back-right" : ""}`} />
-            <div className={`petal petal-center ${isBlooming ? "open-center" : ""}`} />
-            <div className={`petal petal-left ${isBlooming ? "open-left" : ""}`} />
-            <div className={`petal petal-right ${isBlooming ? "open-right" : ""}`} />
-            <div className={`petal petal-front ${isBlooming ? "open-front" : ""}`} />
+          <div className="tulip-leaf tulip-leaf-left grow-leaf-left" />
+          <div className="tulip-leaf tulip-leaf-right grow-leaf-right" />
+          
+          <div 
+            className={`blossom-sway-container ${blossomWindClass}`}
+            style={{
+              position: "absolute",
+              top: "-84px",
+              left: "calc(50% - 40px)",
+              transformOrigin: "bottom center",
+              zIndex: 5,
+            }}
+          >
+            <div className="tulip-blossom grow-blossom">
+              <div className="tulip-receptacle" />
+              <div className={`petal petal-back-left ${isBlooming ? "open-back-left" : ""}`} />
+              <div className={`petal petal-back-right ${isBlooming ? "open-back-right" : ""}`} />
+              <div className={`petal petal-center ${isBlooming ? "open-center" : ""}`} />
+              <div className={`petal petal-left ${isBlooming ? "open-left" : ""}`} />
+              <div className={`petal petal-right ${isBlooming ? "open-right" : ""}`} />
+              <div className={`petal petal-front ${isBlooming ? "open-front" : ""}`} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface BouquetSunflowerProps {
+  leftOffset: string;
+  rotation: string;
+  scale: number;
+  zIndex: number;
+  colorOffset: number;
+  windClass: string;
+  blossomWindClass: string;
+  activeColor: typeof SUNFLOWER_COLORS[0];
+  bottomOffset?: string;
+}
+
+// Reusable Bouquet Sunflower Component
+function BouquetSunflower({
+  leftOffset,
+  rotation,
+  scale,
+  zIndex,
+  colorOffset,
+  windClass,
+  blossomWindClass,
+  activeColor,
+  bottomOffset = "105px",
+}: BouquetSunflowerProps) {
+  const bouquetColor = SUNFLOWER_COLORS[(SUNFLOWER_COLORS.findIndex((c) => c.id === activeColor.id) + colorOffset) % SUNFLOWER_COLORS.length];
+  
+  return (
+    <div 
+      className={`stem-sway-container ${windClass}`}
+      style={{
+        position: "absolute",
+        bottom: bottomOffset,
+        left: leftOffset,
+        transformOrigin: "bottom center",
+        zIndex: zIndex,
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          transformOrigin: "bottom center",
+          transform: `scale(${scale}) rotate(${rotation})`,
+        }}
+      >
+        <div 
+          className="sunflower-stem grow-stem"
+          style={{
+            // @ts-expect-error custom property passing
+            "--tulip-color": bouquetColor.main,
+            "--tulip-color-light": bouquetColor.light,
+            "--tulip-color-dark": bouquetColor.dark,
+          }}
+        >
+          <div className="sunflower-leaf sunflower-leaf-left grow-sunflower-leaf-left" />
+          <div className="sunflower-leaf sunflower-leaf-right grow-sunflower-leaf-right" />
+          
+          <div 
+            className={`blossom-sway-container ${blossomWindClass}`}
+            style={{
+              position: "absolute",
+              top: "-90px",
+              left: "calc(50% - 50px)",
+              transformOrigin: "bottom center",
+              zIndex: 5,
+              width: "100px",
+              height: "100px",
+            }}
+          >
+            <div className="grow-blossom w-full h-full relative" style={{ transformOrigin: "bottom center" }}>
+              {/* Back Petal Layer (24 petals) */}
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div
+                  key={`back-${i}`}
+                  className="sunflower-petal"
+                  style={{
+                    transform: `rotate(${i * 15}deg) translateY(-22px) scale(0.95)`,
+                    opacity: 0.9,
+                    filter: "brightness(0.9)",
+                  }}
+                />
+              ))}
+              
+              {/* Front Petal Layer (24 petals) */}
+              {Array.from({ length: 24 }).map((_, i) => (
+                <div
+                  key={`front-${i}`}
+                  className="sunflower-petal"
+                  style={{
+                    transform: `rotate(${i * 15 + 7.5}deg) translateY(-18px)`,
+                  }}
+                />
+              ))}
+
+              {/* Center Disk */}
+              <div className="sunflower-center-disk">
+                <div className="sunflower-seeds" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface BouquetRoseProps {
+  leftOffset: string;
+  rotation: string;
+  scale: number;
+  zIndex: number;
+  colorOffset: number;
+  windClass: string;
+  blossomWindClass: string;
+  activeColor: typeof ROSE_COLORS[0];
+  bottomOffset?: string;
+}
+
+// Reusable Bouquet Rose Component
+function BouquetRose({
+  leftOffset,
+  rotation,
+  scale,
+  zIndex,
+  colorOffset,
+  windClass,
+  blossomWindClass,
+  activeColor,
+  bottomOffset = "105px",
+}: BouquetRoseProps) {
+  const bouquetColor = ROSE_COLORS[(ROSE_COLORS.findIndex((c) => c.id === activeColor.id) + colorOffset) % ROSE_COLORS.length];
+  
+  return (
+    <div 
+      className={`stem-sway-container ${windClass}`}
+      style={{
+        position: "absolute",
+        bottom: bottomOffset,
+        left: leftOffset,
+        transformOrigin: "bottom center",
+        zIndex: zIndex,
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          transformOrigin: "bottom center",
+          transform: `scale(${scale}) rotate(${rotation})`,
+        }}
+      >
+        <div 
+          className="rose-stem grow-stem"
+          style={{
+            // @ts-expect-error custom property passing
+            "--tulip-color": bouquetColor.main,
+            "--tulip-color-light": bouquetColor.light,
+            "--tulip-color-dark": bouquetColor.dark,
+          }}
+        >
+          {/* Thorns */}
+          <div className="rose-thorn rose-thorn-left" style={{ bottom: "60px" }} />
+          <div className="rose-thorn rose-thorn-right" style={{ bottom: "120px" }} />
+          <div className="rose-thorn rose-thorn-left" style={{ bottom: "180px" }} />
+
+          <div className="rose-leaf rose-leaf-left grow-rose-leaf-left" />
+          <div className="rose-leaf rose-leaf-right grow-rose-leaf-right" />
+          
+          <div 
+            className={`blossom-sway-container ${blossomWindClass}`}
+            style={{
+              position: "absolute",
+              top: "-80px",
+              left: "calc(50% - 40px)",
+              transformOrigin: "bottom center",
+              zIndex: 5,
+              width: "80px",
+              height: "80px",
+            }}
+          >
+            <div className="grow-blossom w-full h-full relative" style={{ transformOrigin: "bottom center" }}>
+              {/* Back Petal Layer (6 petals) */}
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={`back-${i}`}
+                  className="rose-petal"
+                  style={{
+                    transform: `rotate(${i * 60}deg) translateY(-14px) scale(1)`,
+                    borderRadius: "50% 50% 0 50% / 50% 50% 0 50%",
+                  }}
+                />
+              ))}
+              
+              {/* Mid Petal Layer (6 petals) */}
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={`mid-${i}`}
+                  className="rose-petal"
+                  style={{
+                    transform: `rotate(${i * 60 + 30}deg) translateY(-8px) scale(0.8)`,
+                    borderRadius: "50% 50% 50% 0 / 50% 50% 50% 0",
+                    opacity: 0.95,
+                  }}
+                />
+              ))}
+
+              {/* Core Petal Layer (4 petals) */}
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div
+                  key={`core-${i}`}
+                  className="rose-petal"
+                  style={{
+                    transform: `rotate(${i * 90 + 45}deg) translateY(-3px) scale(0.6)`,
+                    borderRadius: "50%",
+                    opacity: 0.9,
+                  }}
+                />
+              ))}
+
+              {/* Central Rose Bud Core */}
+              <div 
+                className="rose-bud-core"
+                style={{
+                  position: "absolute",
+                  width: "16px",
+                  height: "16px",
+                  borderRadius: "50%",
+                  background: `radial-gradient(circle, ${bouquetColor.light} 0%, ${bouquetColor.dark} 100%)`,
+                  left: "calc(50% - 8px)",
+                  top: "calc(50% - 8px)",
+                  zIndex: 10,
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -182,8 +594,9 @@ export default function Home() {
   const [authError, setAuthError] = useState("");
   const [isShaking, setIsShaking] = useState(false);
 
-  // Tulip State
-  const [activePart, setActivePart] = useState<keyof typeof TULIP_PARTS | null>(null);
+  // Flower Config state
+  const [flowerType, setFlowerType] = useState<"tulip" | "sunflower" | "rose">("tulip");
+  const [activePart, setActivePart] = useState<"blossom" | "leaves" | "stem" | "pot" | null>(null);
   const [activeColor, setActiveColor] = useState(TULIP_COLORS[0]);
   const [themeMode, setThemeMode] = useState<"sunset" | "day" | "night">("sunset");
   const [windSpeed, setWindSpeed] = useState<"calm" | "gentle" | "strong">("gentle");
@@ -199,11 +612,9 @@ export default function Home() {
 
   const gardenRef = useRef<HTMLDivElement>(null);
 
-  // Set mounted state and check auth status
+  // Setup mounted state and check local storage
   useEffect(() => {
     setMounted(true);
-    
-    // Check if previously unlocked
     if (typeof window !== "undefined") {
       const savedUnlock = localStorage.getItem("zaid_garden_unlocked");
       if (savedUnlock === "true") {
@@ -211,7 +622,7 @@ export default function Home() {
       }
     }
 
-    // Generate rain drop indices
+    // Generate rain particles
     const drops = Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -221,7 +632,19 @@ export default function Home() {
     setRainDrops(drops);
   }, []);
 
-  // Set hydration decay over time
+  // Sync default color when flower type changes
+  useEffect(() => {
+    if (flowerType === "tulip") {
+      setActiveColor(TULIP_COLORS[0]);
+    } else if (flowerType === "sunflower") {
+      setActiveColor(SUNFLOWER_COLORS[0]);
+    } else {
+      setActiveColor(ROSE_COLORS[0]);
+    }
+    setActivePart(null);
+  }, [flowerType]);
+
+  // Sync hydration decay
   useEffect(() => {
     const interval = setInterval(() => {
       setHydration((h) => Math.max(15, h - 1));
@@ -229,7 +652,7 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Apply custom CSS variables for the tulip colors
+  // Update dynamic CSS variables for petals
   useEffect(() => {
     if (typeof document !== "undefined") {
       const root = document.documentElement;
@@ -239,51 +662,45 @@ export default function Home() {
     }
   }, [activeColor]);
 
-  // Handle Auth Gate Submission
+  // Handle Gate Unlock Submission
   const handleAuthSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const answer = authInput.trim().toLowerCase();
+    const allowedAnswers = ["black", "master", "back", "red", "crimson"];
     
-    // Accept "black", "master", "back", "red", "crimson" (case-insensitive)
-    const allowed = ["black", "master", "back", "red", "crimson"];
-    if (allowed.includes(answer)) {
+    if (allowedAnswers.includes(answer)) {
       if (typeof window !== "undefined") {
         localStorage.setItem("zaid_garden_unlocked", "true");
       }
       setIsUnlocked(true);
     } else {
-      setAuthError("Incorrect answer. Try Zaid's favorite dark color or nickname!");
+      setAuthError("Incorrect answer. Try Zaid's favorite color or nickname!");
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
     }
   };
 
-  // Handle Watering Action
+  // Water the Flower Interaction
   const handleWatering = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (isWatering) return;
     setIsWatering(true);
     
-    // Get relative click coordinate for ripple in pot or soil
     if (gardenRef.current) {
       const rect = gardenRef.current.getBoundingClientRect();
       const x = rect.width / 2;
-      const y = rect.height - 70; // Adjusted for shifted pot position (bottom: 20px)
+      const y = rect.height - 70;
       
       const newRipple = { id: Date.now(), x, y };
       setRipples((r) => [...r, newRipple]);
       
-      // Clear ripples later
       setTimeout(() => {
         setRipples((r) => r.filter((item) => item.id !== newRipple.id));
       }, 1500);
     }
 
-    // Hydration increases
     setHydration((h) => Math.min(100, h + 20));
-    // Growth increases
     setGrowth((g) => Math.min(100, g + 5));
 
-    // Generate floating sparkles
     const newSparkles = Array.from({ length: 12 }).map((_, i) => {
       const dx = `${-80 + Math.random() * 160}px`;
       const dy = `${-180 - Math.random() * 120}px`;
@@ -291,7 +708,7 @@ export default function Home() {
       return {
         id: Date.now() + i,
         left: `${35 + Math.random() * 30}%`,
-        bottom: `115px`, // Adjusted for shifted pot
+        bottom: `115px`,
         dx,
         dy,
         size,
@@ -299,7 +716,6 @@ export default function Home() {
     });
     setSparkles((s) => [...s, ...newSparkles]);
 
-    // Clear sparkles and stop watering animation
     setTimeout(() => {
       setIsWatering(false);
     }, 2000);
@@ -309,114 +725,30 @@ export default function Home() {
     }, 3000);
   };
 
-  // Determine stem wind classes
   const getWindClass = (base: string) => {
     if (windSpeed === "calm") return `${base}-calm`;
     if (windSpeed === "strong") return `${base}-strong`;
     return `${base}-gentle`;
   };
 
-  // Determine blossom secondary wind classes
   const getBlossomWindClass = () => {
     if (windSpeed === "calm") return "wind-sway-blossom-calm";
     if (windSpeed === "strong") return "wind-sway-blossom-strong";
     return "wind-sway-blossom-gentle";
   };
 
-  // Determine if tulip is open (blossoming) based on environment
   const isTulipBlooming = themeMode !== "night";
-
-  if (!mounted) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0a0614]">
-        <div className="text-center text-slate-400">
-          <div className="w-12 h-12 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="animate-pulse">Cultivating garden...</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Security Verification Screen
-  if (!isUnlocked) {
-    return (
-      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#07040d] text-slate-100 p-6 relative overflow-hidden">
-        {/* Animated background lights */}
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-indigo-900/30 filter blur-[80px] animate-pulse pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-900/20 filter blur-[80px] animate-pulse pointer-events-none" style={{ animationDelay: "2s" }} />
-
-        {/* Floating background petals */}
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-2xl opacity-10 pointer-events-none animate-bounce"
-            style={{
-              left: `${15 + Math.random() * 70}%`,
-              top: `${10 + Math.random() * 80}%`,
-              animationDelay: `${i * 0.7}s`,
-              animationDuration: `${3 + Math.random() * 4}s`,
-            }}
-          >
-            🌷
-          </div>
-        ))}
-
-        {/* Security Challenge Card */}
-        <div className={`w-full max-w-md p-8 rounded-2xl glass-panel border border-white/10 z-10 transition-all duration-300 ${
-          isShaking ? "animate-shake border-rose-500/40" : ""
-        }`}>
-          <div className="text-center mb-6">
-            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 mx-auto mb-4 animate-bounce">
-              <span className="text-4xl">🌷</span>
-            </div>
-            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-white to-pink-200 bg-clip-text text-transparent">
-              Toolip Sanctuary
-            </h1>
-            <p className="text-xs text-slate-400 font-mono mt-1">
-              authentication required
-            </p>
-          </div>
-
-          <form onSubmit={handleAuthSubmit} className="space-y-5">
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider font-mono text-slate-300 mb-2.5">
-                Do you know Zaid's favorite color or nickname?
-              </label>
-              <input
-                type="text"
-                value={authInput}
-                onChange={(e) => {
-                  setAuthInput(e.target.value);
-                  setAuthError("");
-                }}
-                placeholder="Enter answer..."
-                className="w-full py-3 px-4 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 font-semibold focus:outline-none focus:border-indigo-500/80 focus:ring-1 focus:ring-indigo-500/80 transition-all duration-300"
-                autoFocus
-              />
-            </div>
-
-            {authError && (
-              <p className="text-xs text-rose-405 font-semibold leading-relaxed text-center bg-rose-500/10 border border-rose-500/20 py-2 px-3 rounded-lg">
-                ⚠️ {authError}
-              </p>
-            )}
-
-            <button
-              type="submit"
-              className="w-full py-3 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-bold transition-all duration-300 shadow-lg shadow-white/5 flex items-center justify-center gap-2"
-            >
-              <span>Unlock Garden</span>
-              <span>🔑</span>
-            </button>
-          </form>
-
-          <div className="text-[10px] text-center text-slate-500 font-mono mt-6 border-t border-white/5 pt-4">
-            🔒 Security Gate &bull; Capital/Small both accepted
-          </div>
-        </div>
-      </div>
-    );
-  }
+  
+  // Dynamic selectors based on flower species type
+  const activeEncyclopedia = 
+    flowerType === "tulip" ? TULIP_PARTS : 
+    flowerType === "sunflower" ? SUNFLOWER_PARTS : 
+    ROSE_PARTS;
+    
+  const colorsList = 
+    flowerType === "tulip" ? TULIP_COLORS : 
+    flowerType === "sunflower" ? SUNFLOWER_COLORS : 
+    ROSE_COLORS;
 
   return (
     <div className={`min-h-screen w-full flex flex-col justify-between transition-all duration-1000 ${
@@ -425,12 +757,14 @@ export default function Home() {
       {/* Header */}
       <header className="w-full max-w-7xl mx-auto px-6 py-5 flex items-center justify-between z-30">
         <div className="flex items-center gap-3">
-          <span className="text-3xl">🌷</span>
+          <span className="text-3xl">
+            {flowerType === "tulip" ? "🌷" : flowerType === "sunflower" ? "🌻" : "🌹"}
+          </span>
           <div>
             <h1 className={`text-2xl font-bold tracking-tight ${themeMode === 'day' ? 'text-amber-950' : 'text-white'}`}>
-              Toolip
+              Toolip Garden
             </h1>
-            <p className={`text-xs opacity-75 font-mono`}>
+            <p className="text-xs opacity-75 font-mono">
               the css bloom interactive
             </p>
           </div>
@@ -452,26 +786,24 @@ export default function Home() {
           <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
             themeMode === "day" ? "bg-amber-100 text-amber-800" : "bg-white/10 text-white/90"
           } backdrop-blur-md border border-white/10`}>
-            🌱 Interactive Garden v1.3
+            🌱 Interactive Garden v1.6
           </span>
         </div>
       </header>
 
-      {/* Main Body Grid */}
+      {/* Main Content Grid */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center py-4">
-        {/* Left Column: The Interactive CSS Tulip Viewport */}
+        {/* Left Column: Garden Viewport */}
         <div className="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[500px]">
-          {/* Glassmorphic border ring around garden */}
           <div className={`absolute inset-0 rounded-3xl -z-10 transition-all duration-500 ${
             themeMode === "day" ? "bg-white/40 shadow-inner" : "bg-black/35 shadow-2xl"
           } backdrop-blur-sm border border-white/10 flex items-center justify-center`}>
-            {/* Ambient Sun/Moon light reflection */}
             <div className={`absolute top-10 w-72 h-72 rounded-full filter blur-[80px] opacity-35 transition-all duration-1000 ${
               themeMode === "day" ? "bg-amber-300" : themeMode === "night" ? "bg-indigo-900" : "bg-pink-500"
             }`} />
           </div>
 
-          {/* Environmental animations (Rain / Dust) */}
+          {/* Environmental animations */}
           <div className="absolute inset-0 overflow-hidden rounded-3xl pointer-events-none">
             {isWatering && rainDrops.map((drop) => (
               <div
@@ -485,11 +817,10 @@ export default function Home() {
               />
             ))}
             
-            {/* Ambient slow-floating dust/pollen */}
             {Array.from({ length: 15 }).map((_, i) => (
               <div
                 key={i}
-                className="absolute w-1.5 h-1.5 bg-yellow-200/40 rounded-full animate-pulse pointer-events-none"
+                className="absolute w-1.5 h-1.5 bg-yellow-250/40 rounded-full animate-pulse pointer-events-none"
                 style={{
                   left: `${10 + Math.random() * 80}%`,
                   top: `${10 + Math.random() * 80}%`,
@@ -500,16 +831,16 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Interactive instruction banner */}
+          {/* User Instructions */}
           <div className="absolute top-6 left-6 right-6 flex items-center justify-between text-xs font-mono opacity-80 z-20">
             <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping inline-block"></span>
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping inline-block" />
               Hover / Click components to inspect
             </span>
             <span>State: {isWatering ? "☔ Watering" : windSpeed === "strong" ? "🍃 Windy" : "☀️ Ambient"}</span>
           </div>
 
-          {/* The Tulip Showcase Garden container (Using inline style positioning to guarantee order correctness) */}
+          {/* The Showcase Garden Container */}
           <div 
             ref={gardenRef}
             className="tulip-garden scale-95 md:scale-105 transition-transform duration-500"
@@ -519,7 +850,7 @@ export default function Home() {
               height: "480px",
             }}
           >
-            {/* Floating click/water ripples */}
+            {/* Click/water ripples */}
             {ripples.map((ripple) => (
               <div
                 key={ripple.id}
@@ -528,7 +859,7 @@ export default function Home() {
               />
             ))}
 
-            {/* Sparkles rising from watering */}
+            {/* Sparkles rising */}
             {sparkles.map((sparkle) => (
               <div
                 key={sparkle.id}
@@ -545,160 +876,273 @@ export default function Home() {
               />
             ))}
 
-            {/* Bouquet Mode: Render 4 Additional Tulips (Total 5 Flowers) */}
+            {/* Bouquet Mode: Render 5 Additional Fanned-out Flowers (Total 6 Flowers) */}
             {viewMode === "bouquet" && (
               <>
-                {/* Tulip 1: Left Outer (Shifted left, smaller, rotated left) */}
-                <BouquetTulip
-                  leftOffset="calc(50% - 46px)"
-                  rotation="-18deg"
-                  scale={0.8}
-                  zIndex={2}
-                  colorOffset={3}
-                  isBlooming={isTulipBlooming}
-                  windClass={getWindClass("wind-sway")}
-                  blossomWindClass={getBlossomWindClass()}
-                  activeColor={activeColor}
-                />
+                {flowerType === "tulip" && (
+                  <>
+                    <BouquetTulip leftOffset="calc(50% - 10px)" rotation="-4deg" scale={0.85} zIndex={2} colorOffset={5} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
+                    <BouquetTulip leftOffset="calc(50% - 46px)" rotation="-20deg" scale={0.8} zIndex={4} colorOffset={3} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetTulip leftOffset="calc(50% - 25px)" rotation="-10deg" scale={0.9} zIndex={5} colorOffset={1} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetTulip leftOffset="calc(50% + 15px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={2} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetTulip leftOffset="calc(50% + 35px)" rotation="20deg" scale={0.8} zIndex={4} colorOffset={4} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                  </>
+                )}
 
-                {/* Tulip 2: Left Inner (Shifted left, medium, rotated left) */}
-                <BouquetTulip
-                  leftOffset="calc(50% - 25px)"
-                  rotation="-8deg"
-                  scale={0.9}
-                  zIndex={3}
-                  colorOffset={1}
-                  isBlooming={isTulipBlooming}
-                  windClass={getWindClass("wind-sway")}
-                  blossomWindClass={getBlossomWindClass()}
-                  activeColor={activeColor}
-                />
+                {flowerType === "sunflower" && (
+                  <>
+                    <BouquetSunflower leftOffset="calc(50% - 10px)" rotation="-4deg" scale={0.85} zIndex={2} colorOffset={5} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
+                    <BouquetSunflower leftOffset="calc(50% - 46px)" rotation="-20deg" scale={0.8} zIndex={4} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetSunflower leftOffset="calc(50% - 25px)" rotation="-10deg" scale={0.9} zIndex={5} colorOffset={1} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetSunflower leftOffset="calc(50% + 15px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={2} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetSunflower leftOffset="calc(50% + 35px)" rotation="20deg" scale={0.8} zIndex={4} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                  </>
+                )}
 
-                {/* Tulip 3: Right Inner (Shifted right, medium, rotated right) */}
-                <BouquetTulip
-                  leftOffset="calc(50% + 17px)"
-                  rotation={window.innerWidth < 0 ? "0deg" : "8deg"}
-                  scale={0.9}
-                  zIndex={3}
-                  colorOffset={2}
-                  isBlooming={isTulipBlooming}
-                  windClass={getWindClass("wind-sway")}
-                  blossomWindClass={getBlossomWindClass()}
-                  activeColor={activeColor}
-                />
-
-                {/* Tulip 4: Right Outer (Shifted right, smaller, rotated right) */}
-                <BouquetTulip
-                  leftOffset="calc(50% + 38px)"
-                  rotation="18deg"
-                  scale={0.8}
-                  zIndex={2}
-                  colorOffset={4}
-                  isBlooming={isTulipBlooming}
-                  windClass={getWindClass("wind-sway")}
-                  blossomWindClass={getBlossomWindClass()}
-                  activeColor={activeColor}
-                />
+                {flowerType === "rose" && (
+                  <>
+                    <BouquetRose leftOffset="calc(50% - 10px)" rotation="-4deg" scale={0.85} zIndex={2} colorOffset={5} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
+                    <BouquetRose leftOffset="calc(50% - 46px)" rotation="-20deg" scale={0.8} zIndex={4} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetRose leftOffset="calc(50% - 25px)" rotation="-10deg" scale={0.9} zIndex={5} colorOffset={1} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetRose leftOffset="calc(50% + 15px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={2} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetRose leftOffset="calc(50% + 35px)" rotation="20deg" scale={0.8} zIndex={4} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                  </>
+                )}
               </>
             )}
 
-            {/* Central Main Interactive Tulip */}
-            <div 
-              className={`stem-sway-container ${getWindClass("wind-sway")}`}
-              style={{
-                position: "absolute",
-                bottom: "105px",
-                left: "calc(50% - 4px)",
-                transformOrigin: "bottom center",
-                zIndex: 4,
-              }}
-            >
-              <div
-                className="tulip-stem grow-stem toolip-trigger"
-                onMouseEnter={() => setActivePart("stem")}
-                onClick={() => setActivePart("stem")}
+            {/* Central Main Interactive Flower */}
+            {flowerType === "tulip" && (
+              <div 
+                className={`stem-sway-container ${getWindClass("wind-sway")}`}
+                style={{
+                  position: "absolute",
+                  bottom: "105px",
+                  left: "calc(50% - 4px)",
+                  transformOrigin: "bottom center",
+                  zIndex: 6,
+                }}
               >
-                {/* Glowing indicator for stem */}
-                <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
-
-                {/* Left Leaf (nested inside stem, relative coordinate positioning) */}
-                <div 
-                  className="tulip-leaf tulip-leaf-left grow-leaf-left toolip-trigger"
-                  onMouseEnter={(e) => {
-                    e.stopPropagation();
-                    setActivePart("leaves");
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActivePart("leaves");
-                  }}
-                >
-                  <div className="glow-indicator top-1/3 left-1/3" />
-                </div>
-
-                {/* Right Leaf (nested inside stem, relative coordinate positioning) */}
-                <div 
-                  className="tulip-leaf tulip-leaf-right grow-leaf-right toolip-trigger"
-                  onMouseEnter={(e) => {
-                    e.stopPropagation();
-                    setActivePart("leaves");
-                  }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActivePart("leaves");
-                  }}
-                >
-                  <div className="glow-indicator top-1/3 right-1/3" />
-                </div>
-
-                {/* Blossom sway container (holds independent sway logic) */}
-                <div 
-                  className={`blossom-sway-container ${getBlossomWindClass()}`}
-                  style={{
-                    position: "absolute",
-                    top: "-84px",
-                    left: "calc(50% - 40px)",
-                    transformOrigin: "bottom center",
-                    zIndex: 5,
-                  }}
-                >
-                  {/* Blossom shape (direct child of sway, handles scale-based growth) */}
-                  <div 
-                    className="tulip-blossom grow-blossom toolip-trigger"
-                    onMouseEnter={(e) => {
-                      e.stopPropagation();
-                      setActivePart("blossom");
-                    }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActivePart("blossom");
-                    }}
+                <div style={{ width: "100%", height: "100%", transformOrigin: "bottom center" }}>
+                  <div
+                    className="tulip-stem grow-stem toolip-trigger"
+                    onMouseEnter={() => setActivePart("stem")}
+                    onClick={() => setActivePart("stem")}
                   >
-                    {/* Receptacle (green base connection) */}
-                    <div className="tulip-receptacle" />
+                    <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
 
-                    {/* Petals backing */}
-                    <div className={`petal petal-back-left ${isTulipBlooming ? "open-back-left" : ""}`} />
-                    <div className={`petal petal-back-right ${isTulipBlooming ? "open-back-right" : ""}`} />
-                    
-                    {/* Center petal */}
-                    <div className={`petal petal-center ${isTulipBlooming ? "open-center" : ""}`} />
-                    
-                    {/* Left/Right foreground overlapping petals */}
-                    <div className={`petal petal-left ${isTulipBlooming ? "open-left" : ""}`} />
-                    <div className={`petal petal-right ${isTulipBlooming ? "open-right" : ""}`} />
-                    
-                    {/* Front overlay petal */}
-                    <div className={`petal petal-front ${isTulipBlooming ? "open-front" : ""}`} />
+                    <div 
+                      className="tulip-leaf tulip-leaf-left grow-leaf-left toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 left-1/3" />
+                    </div>
 
-                    {/* Glowing highlight indicator */}
-                    <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
+                    <div 
+                      className="tulip-leaf tulip-leaf-right grow-leaf-right toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 right-1/3" />
+                    </div>
+
+                    <div 
+                      className={`blossom-sway-container ${getBlossomWindClass()}`}
+                      style={{
+                        position: "absolute",
+                        top: "-84px",
+                        left: "calc(50% - 40px)",
+                        transformOrigin: "bottom center",
+                        zIndex: 5,
+                      }}
+                    >
+                      <div 
+                        className="tulip-blossom grow-blossom toolip-trigger"
+                        onMouseEnter={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                        onClick={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                      >
+                        <div className="tulip-receptacle" />
+                        <div className={`petal petal-back-left ${isTulipBlooming ? "open-back-left" : ""}`} />
+                        <div className={`petal petal-back-right ${isTulipBlooming ? "open-back-right" : ""}`} />
+                        <div className={`petal petal-center ${isTulipBlooming ? "open-center" : ""}`} />
+                        <div className={`petal petal-left ${isTulipBlooming ? "open-left" : ""}`} />
+                        <div className={`petal petal-right ${isTulipBlooming ? "open-right" : ""}`} />
+                        <div className={`petal petal-front ${isTulipBlooming ? "open-front" : ""}`} />
+                        <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            )}
 
-            {/* Soil (Above Pot Rim, Absolute positioned relative to garden) */}
+            {flowerType === "sunflower" && (
+              <div 
+                className={`stem-sway-container ${getWindClass("wind-sway")}`}
+                style={{
+                  position: "absolute",
+                  bottom: "105px",
+                  left: "calc(50% - 6px)",
+                  transformOrigin: "bottom center",
+                  zIndex: 6,
+                }}
+              >
+                <div style={{ width: "100%", height: "100%", transformOrigin: "bottom center" }}>
+                  <div
+                    className="sunflower-stem grow-stem toolip-trigger"
+                    onMouseEnter={() => setActivePart("stem")}
+                    onClick={() => setActivePart("stem")}
+                  >
+                    <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
+
+                    <div 
+                      className="sunflower-leaf sunflower-leaf-left grow-sunflower-leaf-left toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 left-1/3" />
+                    </div>
+
+                    <div 
+                      className="sunflower-leaf sunflower-leaf-right grow-sunflower-leaf-right toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 right-1/3" />
+                    </div>
+
+                    <div 
+                      className={`blossom-sway-container ${getBlossomWindClass()}`}
+                      style={{
+                        position: "absolute",
+                        top: "-90px",
+                        left: "calc(50% - 50px)",
+                        transformOrigin: "bottom center",
+                        zIndex: 5,
+                        width: "100px",
+                        height: "100px",
+                      }}
+                    >
+                      <div 
+                        className="grow-blossom w-full h-full relative toolip-trigger"
+                        style={{ transformOrigin: "bottom center" }}
+                        onMouseEnter={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                        onClick={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                      >
+                        {Array.from({ length: 24 }).map((_, i) => (
+                          <div key={`back-${i}`} className="sunflower-petal" style={{ transform: `rotate(${i * 15}deg) translateY(-22px) scale(0.95)`, opacity: 0.9, filter: "brightness(0.9)" }} />
+                        ))}
+                        {Array.from({ length: 24 }).map((_, i) => (
+                          <div key={`front-${i}`} className="sunflower-petal" style={{ transform: `rotate(${i * 15 + 7.5}deg) translateY(-18px)` }} />
+                        ))}
+                        <div className="sunflower-center-disk">
+                          <div className="sunflower-seeds" />
+                        </div>
+                        <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {flowerType === "rose" && (
+              <div 
+                className={`stem-sway-container ${getWindClass("wind-sway")}`}
+                style={{
+                  position: "absolute",
+                  bottom: "105px",
+                  left: "calc(50% - 4px)",
+                  transformOrigin: "bottom center",
+                  zIndex: 6,
+                }}
+              >
+                <div style={{ width: "100%", height: "100%", transformOrigin: "bottom center" }}>
+                  <div
+                    className="rose-stem grow-stem toolip-trigger"
+                    onMouseEnter={() => setActivePart("stem")}
+                    onClick={() => setActivePart("stem")}
+                  >
+                    {/* Thorns */}
+                    <div className="rose-thorn rose-thorn-left" style={{ bottom: "60px" }} />
+                    <div className="rose-thorn rose-thorn-right" style={{ bottom: "120px" }} />
+                    <div className="rose-thorn rose-thorn-left" style={{ bottom: "180px" }} />
+                    <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
+
+                    <div 
+                      className="rose-leaf rose-leaf-left grow-rose-leaf-left toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 left-1/3" />
+                    </div>
+
+                    <div 
+                      className="rose-leaf rose-leaf-right grow-rose-leaf-right toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 right-1/3" />
+                    </div>
+
+                    <div 
+                      className={`blossom-sway-container ${getBlossomWindClass()}`}
+                      style={{
+                        position: "absolute",
+                        top: "-80px",
+                        left: "calc(50% - 40px)",
+                        transformOrigin: "bottom center",
+                        zIndex: 5,
+                        width: "80px",
+                        height: "80px",
+                      }}
+                    >
+                      <div 
+                        className="grow-blossom w-full h-full relative toolip-trigger"
+                        style={{ transformOrigin: "bottom center" }}
+                        onMouseEnter={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                        onClick={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                      >
+                        {/* Back Petal Layer (6 petals) */}
+                        {Array.from({ length: 6 }).map((_, i) => (
+                          <div key={`back-${i}`} className="rose-petal" style={{ transform: `rotate(${i * 60}deg) translateY(-14px) scale(1)`, borderRadius: "50% 50% 0 50% / 50% 50% 0 50%" }} />
+                        ))}
+                        
+                        {/* Mid Petal Layer (6 petals) */}
+                        {Array.from({ length: 6 }).map((_, i) => (
+                          <div key={`mid-${i}`} className="rose-petal" style={{ transform: `rotate(${i * 60 + 30}deg) translateY(-8px) scale(0.8)`, borderRadius: "50% 50% 50% 0 / 50% 50% 50% 0", opacity: 0.95 }} />
+                        ))}
+
+                        {/* Core Petal Layer (4 petals) */}
+                        {Array.from({ length: 4 }).map((_, i) => (
+                          <div key={`core-${i}`} className="rose-petal" style={{ transform: `rotate(${i * 90 + 45}deg) translateY(-3px) scale(0.6)`, borderRadius: "50%", opacity: 0.9 }} />
+                        ))}
+
+                        {/* Central Rose Bud Core */}
+                        <div 
+                          className="rose-bud-core"
+                          style={{
+                            position: "absolute",
+                            width: "16px",
+                            height: "16px",
+                            borderRadius: "50%",
+                            background: `radial-gradient(circle, ${activeColor.light} 0%, ${activeColor.dark} 100%)`,
+                            left: "calc(50% - 8px)",
+                            top: "calc(50% - 8px)",
+                            zIndex: 10,
+                            boxShadow: "0 1px 3px rgba(0,0,0,0.4)",
+                          }}
+                        />
+                        <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Soil */}
             <div 
               className="soil toolip-trigger"
               style={{
@@ -711,7 +1155,7 @@ export default function Home() {
               onClick={() => setActivePart("pot")}
             />
 
-            {/* Pot Rim (Absolute positioned relative to garden) */}
+            {/* Pot Rim */}
             <div 
               className="pot-rim toolip-trigger"
               style={{
@@ -724,7 +1168,7 @@ export default function Home() {
               onClick={() => setActivePart("pot")}
             />
 
-            {/* The Soil Pot (Absolute positioned relative to garden) */}
+            {/* The Soil Pot */}
             <div 
               className="flower-pot toolip-trigger"
               style={{
@@ -741,9 +1185,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Right Column: Glassmorphic Control Dashboard */}
+        {/* Right Column: Controls Dashboard */}
         <div className="lg:col-span-5 flex flex-col gap-6 w-full z-10">
-          {/* Section 1: Dashboard Panel */}
           <div className={`p-6 rounded-2xl border transition-colors duration-500 ${
             themeMode === "day"
               ? "glass-panel-light text-amber-950 border-amber-200"
@@ -753,13 +1196,62 @@ export default function Home() {
               <span>🎛️</span> Environmental Controls
             </h2>
 
-            {/* Arrangement Toggle (Single vs Bouquet) */}
+            {/* Flower Species Toggle */}
+            <div className="mb-5">
+              <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Flower Species</label>
+              <div className="grid grid-cols-3 gap-2">
+                <button
+                  onClick={() => setFlowerType("tulip")}
+                  className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all duration-300 ${
+                    flowerType === "tulip"
+                      ? themeMode === "day"
+                        ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
+                        : "bg-white text-slate-900 border-white shadow-lg"
+                      : themeMode === "day"
+                        ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
+                        : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
+                  }`}
+                >
+                  🌷 Tulip
+                </button>
+                <button
+                  onClick={() => setFlowerType("sunflower")}
+                  className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all duration-300 ${
+                    flowerType === "sunflower"
+                      ? themeMode === "day"
+                        ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
+                        : "bg-white text-slate-900 border-white shadow-lg"
+                      : themeMode === "day"
+                        ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
+                        : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
+                  }`}
+                >
+                  🌻 Sunflower
+                </button>
+                <button
+                  onClick={() => setFlowerType("rose")}
+                  className={`py-2.5 px-2 rounded-xl text-xs font-bold border transition-all duration-300 ${
+                    flowerType === "rose"
+                      ? themeMode === "day"
+                        ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
+                        : "bg-white text-slate-900 border-white shadow-lg"
+                      : themeMode === "day"
+                        ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
+                        : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
+                  }`}
+                >
+                  🌹 Rose
+                </button>
+              </div>
+            </div>
+
+            {/* Arrangement Toggle */}
             <div className="mb-5">
               <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Garden Arrangement</label>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { id: "single", name: "🌷 Single Bloom", desc: "One custom flower" },
-                  { id: "bouquet", name: "💐 Bouquet", desc: "5-Flower arrangement" },
+                  { id: "single", name: "🌷 Single Bloom" },
+                  { id: "bouquet", name: "💐 Bouquet (6)" },
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -780,14 +1272,14 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Day/Night Toggles */}
+            {/* Time of Day */}
             <div className="mb-5">
               <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Time of Day</label>
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { id: "day", name: "☀️ Day", desc: "Bright sunshine" },
-                  { id: "sunset", name: "🌅 Sunset", desc: "Warm glow" },
-                  { id: "night", name: "🌙 Night", desc: "Petals close" },
+                  { id: "day", name: "☀️ Day" },
+                  { id: "sunset", name: "🌅 Sunset" },
+                  { id: "night", name: "🌙 Night" },
                 ].map((mode) => (
                   <button
                     key={mode.id}
@@ -796,7 +1288,7 @@ export default function Home() {
                       themeMode === mode.id
                         ? themeMode === "day"
                           ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
-                          : "bg-white text-slate-900 border-white shadow-lg shadow-white/5"
+                          : "bg-white text-slate-900 border-white shadow-lg"
                         : themeMode === "day"
                           ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
                           : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
@@ -813,9 +1305,9 @@ export default function Home() {
               <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Breeze Strength</label>
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { id: "calm", name: "Silent", desc: "No wind" },
-                  { id: "gentle", name: "Gentle", desc: "Soft sway" },
-                  { id: "strong", name: "Gale", desc: "Heavy sway" },
+                  { id: "calm", name: "Silent" },
+                  { id: "gentle", name: "Gentle" },
+                  { id: "strong", name: "Gale" },
                 ].map((wind) => (
                   <button
                     key={wind.id}
@@ -836,7 +1328,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Water and Nourish */}
+            {/* Water Flower */}
             <div>
               <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Nourishment</label>
               <button
@@ -850,12 +1342,12 @@ export default function Home() {
                       : "bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold border-sky-300 shadow-sky-500/20"
                 }`}
               >
-                <span>{isWatering ? "🌧️ Watering..." : "💦 Water the Flower"}</span>
+                <span>{isWatering ? "🌧️ Watering..." : "💦 Water the Garden"}</span>
               </button>
             </div>
           </div>
 
-          {/* Section 2: Color Customizer */}
+          {/* Color Customizer */}
           <div className={`p-6 rounded-2xl border transition-colors duration-500 ${
             themeMode === "day"
               ? "glass-panel-light text-amber-950 border-amber-200"
@@ -865,11 +1357,11 @@ export default function Home() {
               <span>🎨</span> Color Customizer
             </h2>
             <p className="text-xs opacity-75 mb-4">
-              Select a pigment to modify the primary tulip petals' color profile.
+              Select a pigment to modify the primary petals' color profile.
             </p>
 
             <div className="flex flex-wrap gap-2.5">
-              {TULIP_COLORS.map((color) => (
+              {colorsList.map((color) => (
                 <button
                   key={color.id}
                   onClick={() => setActiveColor(color)}
@@ -883,7 +1375,6 @@ export default function Home() {
                         : "bg-white/5 hover:bg-white/10 border-white/10"
                   }`}
                 >
-                  {/* Miniature petal color circle */}
                   <span
                     className="w-4 h-4 rounded-full inline-block border border-black/20 shadow-sm"
                     style={{
@@ -892,7 +1383,6 @@ export default function Home() {
                   />
                   <span className="text-xs font-semibold">{color.name}</span>
 
-                  {/* Tick selection mark */}
                   {activeColor.id === color.id && (
                     <span className="text-emerald-500 text-[10px] font-bold">✓</span>
                   )}
@@ -900,13 +1390,12 @@ export default function Home() {
               ))}
             </div>
             
-            {/* Color symbolism tooltip details */}
             <div className="mt-3.5 pt-3.5 border-t border-white/10 text-xs italic opacity-75">
               <strong>Symbolism:</strong> {activeColor.description}
             </div>
           </div>
 
-          {/* Section 3: Toolip Encyclopedia (Interactive display) */}
+          {/* encyclopedia display */}
           <div className={`p-6 rounded-2xl border min-h-[190px] flex flex-col justify-between transition-colors duration-500 ${
             themeMode === "day"
               ? "glass-panel-light text-amber-950 border-amber-200 shadow-lg"
@@ -916,7 +1405,7 @@ export default function Home() {
               <div className="animate-fade-in">
                 <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
                   <h3 className="font-bold text-base flex items-center gap-2">
-                    <span>{TULIP_PARTS[activePart].emoji}</span> {TULIP_PARTS[activePart].name}
+                    <span>{activeEncyclopedia[activePart].emoji}</span> {activeEncyclopedia[activePart].name}
                   </h3>
                   <button 
                     onClick={() => setActivePart(null)}
@@ -926,27 +1415,31 @@ export default function Home() {
                   </button>
                 </div>
                 <p className="text-xs font-semibold text-sky-400 mb-2 italic">
-                  &ldquo;{TULIP_PARTS[activePart].tagline}&rdquo;
+                  &ldquo;{activeEncyclopedia[activePart].tagline}&rdquo;
                 </p>
                 <p className="text-xs opacity-90 leading-relaxed mb-3">
-                  {TULIP_PARTS[activePart].fact}
+                  {activeEncyclopedia[activePart].fact}
                 </p>
                 <div className="p-3 rounded-xl bg-black/25 text-[11px] leading-relaxed border border-white/5">
                   <strong className="text-amber-350 block mb-1">💡 Did you know?</strong>
-                  {TULIP_PARTS[activePart].didYouKnow}
+                  {activeEncyclopedia[activePart].didYouKnow}
                 </div>
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center text-center py-6 my-auto opacity-75 animate-fade-in">
-                <span className="text-3xl mb-2 animate-bounce">🐝</span>
-                <h3 className="font-bold text-sm mb-1">Hover over the Tulip components</h3>
+                <span className="text-3xl mb-2 animate-bounce">
+                  {flowerType === "tulip" ? "🐝" : flowerType === "sunflower" ? "🌻" : "🦋"}
+                </span>
+                <h3 className="font-bold text-sm mb-1">
+                  Hover over the {flowerType === "tulip" ? "Tulip" : flowerType === "sunflower" ? "Sunflower" : "Rose"} components
+                </h3>
                 <p className="text-xs max-w-[280px]">
                   Explore different anatomical parts (Petals, Leaves, Stem, or Pot) to unlock their botanical secrets and history!
                 </p>
               </div>
             )}
             
-            {/* Garden Health Stats */}
+            {/* stats */}
             <div className="grid grid-cols-3 gap-4 border-t border-white/10 pt-4 mt-4 text-center">
               <div>
                 <span className="text-xs opacity-75 block font-mono">Hydration</span>

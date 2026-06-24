@@ -587,3 +587,164 @@ body {
   20%, 40%, 60%, 80% { transform: translateX(6px); }
 }
 
+/* Sunflower Specific Styles */
+.sunflower-stem {
+  width: 12px;
+  height: 280px;
+  background: linear-gradient(to right, #22c55e, #16a34a, #15803d);
+  border-radius: 6px;
+  transform-origin: bottom center;
+  position: relative;
+}
+
+.sunflower-leaf {
+  position: absolute;
+  background: linear-gradient(135deg, #10b981 0%, #047857 50%, #064e3b 100%);
+  z-index: 4;
+  opacity: 0;
+  box-shadow: inset -2px -2px 10px rgba(0,0,0,0.1), 2px 4px 8px rgba(0,0,0,0.15);
+}
+
+.sunflower-leaf-left {
+  width: 48px;
+  height: 34px;
+  bottom: 70px;
+  left: -42px;
+  border-radius: 80% 0 80% 50% / 80% 0 80% 50%;
+  transform-origin: right bottom;
+}
+
+.sunflower-leaf-right {
+  width: 48px;
+  height: 34px;
+  bottom: 130px;
+  right: -42px;
+  border-radius: 0 80% 50% 80% / 0 80% 50% 80%;
+  transform-origin: left bottom;
+}
+
+.grow-sunflower-leaf-left {
+  animation: grow-leaf-left-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+}
+
+.grow-sunflower-leaf-right {
+  animation: grow-leaf-right-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+/* Sunflower Petal */
+.sunflower-petal {
+  position: absolute;
+  width: 14px;
+  height: 38px;
+  background: linear-gradient(to top, var(--tulip-color-dark) 0%, var(--tulip-color) 40%, var(--tulip-color-light) 100%);
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  left: calc(50% - 7px);
+  bottom: 50%;
+  transform-origin: bottom center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+/* Sunflower Center seed head */
+.sunflower-center-disk {
+  width: 58px;
+  height: 58px;
+  background: radial-gradient(circle, #3d1c02 0%, #170700 80%, #ffd700 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 29px);
+  left: calc(50% - 29px);
+  z-index: 10;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.65), 0 3px 6px rgba(0,0,0,0.3);
+  border: 1.5px solid #5c2c16;
+}
+
+.sunflower-seeds {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.3;
+  background-image: radial-gradient(circle, #000 1px, transparent 1.5px);
+  background-size: 5px 5px;
+  background-position: 0 0, 2.5px 2.5px;
+}
+
+/* Rose Specific Styles */
+.rose-stem {
+  width: 8px;
+  height: 280px;
+  background: linear-gradient(to right, #166534, #14532d, #0f2914);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  position: relative;
+}
+
+.rose-thorn {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 5;
+}
+
+.rose-thorn-left {
+  left: -5px;
+  border-width: 4px 6px 4px 0;
+  border-color: transparent #5c1818 transparent transparent;
+  transform: rotate(15deg);
+}
+
+.rose-thorn-right {
+  right: -5px;
+  border-width: 4px 0 4px 6px;
+  border-color: transparent transparent transparent #5c1818;
+  transform: rotate(-15deg);
+}
+
+.rose-leaf {
+  position: absolute;
+  background: linear-gradient(135deg, #15803d 0%, #166534 60%, #14532d 100%);
+  z-index: 4;
+  opacity: 0;
+  box-shadow: inset -1px -1px 5px rgba(0,0,0,0.15), 1px 2px 4px rgba(0,0,0,0.2);
+}
+
+.rose-leaf-left {
+  width: 34px;
+  height: 24px;
+  bottom: 80px;
+  left: -29px;
+  border-radius: 80% 10% 80% 10% / 80% 10% 80% 10%;
+  transform-origin: right bottom;
+}
+
+.rose-leaf-right {
+  width: 34px;
+  height: 24px;
+  bottom: 140px;
+  right: -29px;
+  border-radius: 10% 80% 10% 80% / 10% 80% 10% 80%;
+  transform-origin: left bottom;
+}
+
+.grow-rose-leaf-left {
+  animation: grow-leaf-left-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+}
+
+.grow-rose-leaf-right {
+  animation: grow-leaf-right-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+/* Rose Petal Spiral */
+.rose-petal {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at center, var(--tulip-color-light) 0%, var(--tulip-color) 65%, var(--tulip-color-dark) 100%);
+  left: calc(50% - 20px);
+  top: calc(50% - 20px);
+  transform-origin: center center;
+  box-shadow: inset 1px 1px 3px rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.15);
+}
+
+
+
