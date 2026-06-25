@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useId } from "react";
+
+let globalShowButterfly = true;
 
 // Tulip color palette options
 const TULIP_COLORS = [
@@ -469,6 +471,140 @@ interface Sparkle {
   size: string;
 }
 
+interface ButterflyProps {
+  left?: string;
+  top?: string;
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+interface WingProps {
+  idSuffix: string;
+}
+
+function LeftWing({ idSuffix }: WingProps) {
+  const gradId = `monarchGradLeft-${idSuffix}`;
+  return (
+    <svg viewBox="0 0 50 70" className="w-full h-full" style={{ overflow: "visible" }}>
+      <defs>
+        <linearGradient id={gradId} x1="1" y1="0.5" x2="0" y2="0.5">
+          <stop offset="0%" stopColor="var(--tulip-color-light)" />
+          <stop offset="60%" stopColor="var(--tulip-color)" />
+          <stop offset="100%" stopColor="var(--tulip-color-dark)" />
+        </linearGradient>
+      </defs>
+      <path 
+        d="M48,35 C48,15 32,2 8,5 C1,6 -3,18 4,32 C8,42 22,46 26,49 C18,54 13,62 20,68 C28,74 45,67 48,45 Z" 
+        fill={`url(#${gradId})`}
+      />
+      <path 
+        d="M48,40 L12,8 M48,40 L8,18 M48,40 L6,30 M48,40 L12,38 M48,40 L24,45 M48,40 L20,58 M48,40 L28,66 M48,40 L40,64" 
+        stroke="#000" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+      <path 
+        d="M48,35 C48,15 32,2 8,5 C1,6 -3,18 4,32 C8,42 22,46 26,49 C18,54 13,62 20,68 C28,74 45,67 48,45" 
+        fill="none" 
+        stroke="#000" 
+        strokeWidth="5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      />
+      <g fill="#fff">
+        <circle cx="10" cy="5" r="0.8" />
+        <circle cx="6" cy="8" r="0.6" />
+        <circle cx="4" cy="12" r="0.6" />
+        <circle cx="2" cy="18" r="0.6" />
+        <circle cx="2" cy="24" r="0.6" />
+        <circle cx="3" cy="28" r="0.6" />
+        <circle cx="5" cy="33" r="0.6" />
+        <circle cx="12" cy="40" r="0.6" />
+        <circle cx="16" cy="44" r="0.6" />
+        <circle cx="15" cy="56" r="0.6" />
+        <circle cx="17" cy="62" r="0.6" />
+        <circle cx="22" cy="67" r="0.8" />
+        <circle cx="28" cy="70" r="0.6" />
+        <circle cx="35" cy="68" r="0.6" />
+        <circle cx="42" cy="62" r="0.6" />
+      </g>
+    </svg>
+  );
+}
+
+function RightWing({ idSuffix }: WingProps) {
+  const gradId = `monarchGradRight-${idSuffix}`;
+  return (
+    <svg viewBox="0 0 50 70" className="w-full h-full" style={{ overflow: "visible" }}>
+      <defs>
+        <linearGradient id={gradId} x1="0" y1="0.5" x2="1" y2="0.5">
+          <stop offset="0%" stopColor="var(--tulip-color-light)" />
+          <stop offset="60%" stopColor="var(--tulip-color)" />
+          <stop offset="100%" stopColor="var(--tulip-color-dark)" />
+        </linearGradient>
+      </defs>
+      <path 
+        d="M2,35 C2,15 18,2 42,5 C49,6 53,18 46,32 C42,42 28,46 24,49 C32,54 37,62 30,68 C22,74 5,67 2,45 Z" 
+        fill={`url(#${gradId})`}
+      />
+      <path 
+        d="M2,40 L38,8 M2,40 L42,18 M2,40 L44,30 M2,40 L38,38 M2,40 L26,45 M2,40 L30,58 M2,40 L22,66 M2,40 L10,64" 
+        stroke="#000" 
+        strokeWidth="1.5" 
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+      <path 
+        d="M2,35 C2,15 18,2 42,5 C49,6 53,18 46,32 C42,42 28,46 24,49 C32,54 37,62 30,68 C22,74 5,67 2,45" 
+        fill="none" 
+        stroke="#000" 
+        strokeWidth="5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      />
+      <g fill="#fff">
+        <circle cx="40" cy="5" r="0.8" />
+        <circle cx="44" cy="8" r="0.6" />
+        <circle cx="46" cy="12" r="0.6" />
+        <circle cx="48" cy="18" r="0.6" />
+        <circle cx="48" cy="24" r="0.6" />
+        <circle cx="47" cy="28" r="0.6" />
+        <circle cx="45" cy="33" r="0.6" />
+        <circle cx="38" cy="40" r="0.6" />
+        <circle cx="34" cy="44" r="0.6" />
+        <circle cx="35" cy="56" r="0.6" />
+        <circle cx="33" cy="62" r="0.6" />
+        <circle cx="28" cy="67" r="0.8" />
+        <circle cx="22" cy="70" r="0.6" />
+        <circle cx="15" cy="68" r="0.6" />
+        <circle cx="8" cy="62" r="0.6" />
+      </g>
+    </svg>
+  );
+}
+
+function Butterfly({ left = "50%", top = "50%", className = "", style }: ButterflyProps) {
+  const rawId = useId();
+  const idSuffix = rawId.replace(/:/g, "");
+  return (
+    <div 
+      className={`butterfly-container butterfly-hovering ${className}`} 
+      style={{ left, top, ...style }}
+    >
+      <div className="butterfly-body" />
+      <div className="butterfly-antenna-left" />
+      <div className="butterfly-antenna-right" />
+      <div className="butterfly-wing butterfly-wing-left">
+        <LeftWing idSuffix={idSuffix} />
+      </div>
+      <div className="butterfly-wing butterfly-wing-right">
+        <RightWing idSuffix={idSuffix} />
+      </div>
+    </div>
+  );
+}
+
 interface BouquetTulipProps {
   leftOffset: string;
   rotation: string;
@@ -549,6 +685,18 @@ function BouquetTulip({
               <div className={`petal petal-right ${isBlooming ? "open-right" : ""}`} />
               <div className={`petal petal-front ${isBlooming ? "open-front" : ""}`} />
             </div>
+            {globalShowButterfly && (
+              <Butterfly 
+                left="25px" 
+                top="-20px" 
+                style={{
+                  // @ts-expect-error local CSS custom variables
+                  "--tulip-color": bouquetColor.main,
+                  "--tulip-color-light": bouquetColor.light,
+                  "--tulip-color-dark": bouquetColor.dark,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -657,6 +805,18 @@ function BouquetSunflower({
                 <div className="sunflower-seeds" />
               </div>
             </div>
+            {globalShowButterfly && (
+              <Butterfly 
+                left="35px" 
+                top="10px" 
+                style={{
+                  // @ts-expect-error local CSS custom variables
+                  "--tulip-color": bouquetColor.main,
+                  "--tulip-color-light": bouquetColor.light,
+                  "--tulip-color-dark": bouquetColor.dark,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -795,6 +955,18 @@ function BouquetRose({
                 }}
               />
             </div>
+            {globalShowButterfly && (
+              <Butterfly 
+                left="25px" 
+                top="-10px" 
+                style={{
+                  // @ts-expect-error local CSS custom variables
+                  "--tulip-color": bouquetColor.main,
+                  "--tulip-color-light": bouquetColor.light,
+                  "--tulip-color-dark": bouquetColor.dark,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -916,6 +1088,18 @@ function BouquetLily({
                 <div className="lily-stigma" />
               </div>
             </div>
+            {globalShowButterfly && (
+              <Butterfly 
+                left="25px" 
+                top="-20px" 
+                style={{
+                  // @ts-expect-error local CSS custom variables
+                  "--tulip-color": bouquetColor.main,
+                  "--tulip-color-light": bouquetColor.light,
+                  "--tulip-color-dark": bouquetColor.dark,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -1031,6 +1215,18 @@ function BouquetDaffodil({
                 </div>
               </div>
             </div>
+            {globalShowButterfly && (
+              <Butterfly 
+                left="25px" 
+                top="-20px" 
+                style={{
+                  // @ts-expect-error local CSS custom variables
+                  "--tulip-color": bouquetColor.main,
+                  "--tulip-color-light": bouquetColor.light,
+                  "--tulip-color-dark": bouquetColor.dark,
+                }}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -1060,12 +1256,15 @@ export default function Home() {
   // Interactive stats
   const [hydration, setHydration] = useState(70);
   const [growth, setGrowth] = useState(80);
+  const [showButterfly, setShowButterfly] = useState(true);
   const [isWatering, setIsWatering] = useState(false);
   const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
   const [sparkles, setSparkles] = useState<Array<Sparkle>>([]);
   const [rainDrops, setRainDrops] = useState<Array<Particle>>([]);
 
   const gardenRef = useRef<HTMLDivElement>(null);
+
+  globalShowButterfly = showButterfly;
 
   // Setup mounted state and check local storage
   useEffect(() => {
@@ -1585,6 +1784,9 @@ export default function Home() {
                         <div className={`petal petal-front ${isTulipBlooming ? "open-front" : ""}`} />
                         <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
                       </div>
+                      {showButterfly && (
+                        <Butterfly left="25px" top="-20px" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1655,6 +1857,9 @@ export default function Home() {
                         </div>
                         <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       </div>
+                      {showButterfly && (
+                        <Butterfly left="35px" top="10px" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1750,6 +1955,9 @@ export default function Home() {
                         />
                         <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                       </div>
+                      {showButterfly && (
+                        <Butterfly left="25px" top="-10px" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1852,6 +2060,9 @@ export default function Home() {
 
                         <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
                       </div>
+                      {showButterfly && (
+                        <Butterfly left="25px" top="-20px" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1944,6 +2155,9 @@ export default function Home() {
 
                         <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
                       </div>
+                      {showButterfly && (
+                        <Butterfly left="25px" top="-20px" />
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2398,6 +2612,26 @@ export default function Home() {
                   </button>
                 ))}
               </div>
+            </div>
+
+            {/* Butterfly Toggle */}
+            <div className="mb-5">
+              <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Fauna</label>
+              <button
+                onClick={() => setShowButterfly(!showButterfly)}
+                className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold border transition-all duration-300 flex items-center justify-center gap-2 ${
+                  showButterfly
+                    ? themeMode === "day"
+                      ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
+                      : "bg-white text-slate-900 border-white shadow-lg"
+                    : themeMode === "day"
+                      ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
+                      : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
+                }`}
+              >
+                <span>🦋</span>
+                <span>{showButterfly ? "Butterfly: Active" : "Butterfly: Hidden"}</span>
+              </button>
             </div>
 
             {/* Water Flower */}
