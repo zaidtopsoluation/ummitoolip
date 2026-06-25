@@ -178,6 +178,65 @@ const LILY_COLORS = [
   },
 ];
 
+// Daffodil color palette options
+const DAFFODIL_COLORS = [
+  {
+    id: "daffodil-yellow",
+    name: "Classic Yellow",
+    main: "#facc15",
+    light: "#fef08a",
+    dark: "#ca8a04",
+    trumpet: "#eab308",
+    trumpetLight: "#fef08a",
+    trumpetDark: "#854d0e",
+    description: "Bright yellow daffodils symbolize rebirth, new beginnings, and the arrival of spring.",
+  },
+  {
+    id: "daffodil-white-yellow",
+    name: "Bicolor Cheer",
+    main: "#f1f5f9",
+    light: "#ffffff",
+    dark: "#cbd5e1",
+    trumpet: "#fbbf24",
+    trumpetLight: "#fef08a",
+    trumpetDark: "#ca8a04",
+    description: "Pure white petals surrounding a golden yellow cup represent innocence and joy.",
+  },
+  {
+    id: "daffodil-orange",
+    name: "Sunset Flare",
+    main: "#facc15",
+    light: "#fef08a",
+    dark: "#eab308",
+    trumpet: "#ea580c",
+    trumpetLight: "#f97316",
+    trumpetDark: "#9a3412",
+    description: "Yellow petals with a striking orange trumpet represent creativity and vibrant energy.",
+  },
+  {
+    id: "daffodil-white",
+    name: "Paperwhite Pearl",
+    main: "#f8fafc",
+    light: "#ffffff",
+    dark: "#e2e8f0",
+    trumpet: "#f1f5f9",
+    trumpetLight: "#ffffff",
+    trumpetDark: "#cbd5e1",
+    description: "Pure white blossoms represent grace, winter beauty, and sweet simplicity.",
+  },
+  {
+    id: "daffodil-pink",
+    name: "Apricot Breeze",
+    main: "#f1f5f9",
+    light: "#ffffff",
+    dark: "#e2e8f0",
+    trumpet: "#fda4af",
+    trumpetLight: "#fecdd3",
+    trumpetDark: "#e11d48",
+    description: "Creamy white petals with a soft pink/apricot trumpet represent elegance and admiration.",
+  },
+];
+
 // Interactive Tulip Parts
 const TULIP_PARTS = {
   blossom: {
@@ -322,6 +381,42 @@ const LILY_PARTS = {
   },
 };
 
+// Interactive Daffodil Parts
+const DAFFODIL_PARTS = {
+  blossom: {
+    id: "blossom",
+    name: "The Corona & Petals",
+    emoji: "🌼",
+    tagline: "A star of six petals surrounding a central trumpet.",
+    fact: "The center 'cup' of a daffodil is botanically called a corona or trumpet, while the outer ring of six petal-like structures is called the perianth (made of three true petals and three sepals).",
+    didYouKnow: "Daffodils always face the sun when they bloom, and their central corona protects the delicate reproductive organs from harsh spring rain.",
+  },
+  leaves: {
+    id: "leaves",
+    name: "Strap-like Leaves",
+    emoji: "🍃",
+    tagline: "Flat, sword-shaped foliage.",
+    fact: "Daffodil leaves are thick, narrow, and strap-like. They grow straight up from the bulb to capture early spring sunlight before taller trees leaf out.",
+    didYouKnow: "You should never cut or tie daffodil leaves after they finish blooming. They need to photosynthesize and store energy back into the bulb for next year's bloom!",
+  },
+  stem: {
+    id: "stem",
+    name: "The Hollow Scape",
+    emoji: "🌱",
+    tagline: "A leafless, upright stem with a nodding neck.",
+    fact: "The daffodil stem is a leafless stalk called a scape. At the very top, a papery sheath called a spathe protects the flower bud before it opens.",
+    didYouKnow: "Daffodil stems contain a slimy sap that is toxic to other flowers. Placing freshly cut daffodils in a vase with tulips will cause the tulips to wilt faster, unless the daffodils are conditioned first!",
+  },
+  pot: {
+    id: "pot",
+    name: "The Perennial Bulb",
+    emoji: "🪵",
+    tagline: "A cold-hardy underground powerhouse.",
+    fact: "Daffodil bulbs contain calcium oxalate crystals, making them poisonous to animals like rabbits, deer, and squirrels, which is why they are rarely eaten by garden pests.",
+    didYouKnow: "A daffodil bulb can survive and multiply underground for decades. In the wild, entire fields of daffodils can be traced back to a single bulb planted over a century ago!",
+  },
+};
+
 // Interactive Mixed Parts
 const MIXED_PARTS = {
   blossom: {
@@ -330,7 +425,7 @@ const MIXED_PARTS = {
     emoji: "💐",
     tagline: "A harmonious blend of species.",
     fact: "Combining different flowers in a bouquet has been a tradition for centuries, often communicating complex messages through the 'language of flowers' (floriography).",
-    didYouKnow: "A bouquet containing tulips, sunflowers, roses, and lilies represents a combination of deep love, adoration, passion, and purity!",
+    didYouKnow: "A bouquet containing tulips, sunflowers, roses, lilies, and daffodils represents a combination of deep love, adoration, passion, purity, and new beginnings!",
   },
   leaves: {
     id: "leaves",
@@ -338,14 +433,14 @@ const MIXED_PARTS = {
     emoji: "🍃",
     tagline: "Diverse leaf structures working together.",
     fact: "In a mixed bouquet, the green leaves of different species provide contrasting textures and shades of green, which makes the bright colors of the blossoms pop.",
-    didYouKnow: "Using leaves like lanceolate lily leaves, serrated rose leaflets, and broad sunflower leaves makes the arrangement look balanced and natural.",
+    didYouKnow: "Using leaves like lanceolate lily leaves, serrated rose leaflets, flat daffodil strap leaves, and broad sunflower leaves makes the arrangement look balanced and natural.",
   },
   stem: {
     id: "stem",
     name: "Sturdy Stems",
     emoji: "🌱",
     tagline: "Supporting a diverse community.",
-    fact: "Stems transport water to the blossoms. When different species are in the same vase, they share the water, but some species (like daffodils) can release sap that affects others, though tulips, roses, lilies, and sunflowers get along well!",
+    fact: "Stems transport water to the blossoms. When different species are in the same vase, they share the water, but some species (like daffodils) can release sap that affects others, though tulips, roses, lilies, sunflowers, and daffodils get along well in our digital garden!",
     didYouKnow: "Cutting stems at a 45-degree angle increases the surface area for water absorption, helping all the flowers in the bouquet stay fresh longer.",
   },
   pot: {
@@ -354,7 +449,7 @@ const MIXED_PARTS = {
     emoji: "🪵",
     tagline: "Anchored in the same garden bed.",
     fact: "A mixed garden bed requires careful spacing and soil preparation so that plants with different root structures and nutrient needs can grow together harmoniously.",
-    didYouKnow: "Sunflowers enrich soil by extracting toxins, while roses and lilies thrive in nutrient-dense, well-draining soil, making them great companions when balanced correctly.",
+    didYouKnow: "Sunflowers enrich soil by extracting toxins, while roses, lilies, and daffodils thrive in nutrient-dense, well-draining soil, making them great companions when balanced correctly.",
   },
 };
 
@@ -828,6 +923,121 @@ function BouquetLily({
   );
 }
 
+interface BouquetDaffodilProps {
+  leftOffset: string;
+  rotation: string;
+  scale: number;
+  zIndex: number;
+  colorOffset: number;
+  isBlooming: boolean;
+  windClass: string;
+  blossomWindClass: string;
+  activeColor: { id: string };
+  bottomOffset?: string;
+}
+
+// Reusable Bouquet Daffodil Component
+function BouquetDaffodil({
+  leftOffset,
+  rotation,
+  scale,
+  zIndex,
+  colorOffset,
+  isBlooming,
+  windClass,
+  blossomWindClass,
+  activeColor,
+  bottomOffset = "105px",
+}: BouquetDaffodilProps) {
+  const activeIndex = DAFFODIL_COLORS.findIndex((c) => c.id === activeColor.id);
+  const safeIndex = activeIndex >= 0 ? activeIndex : 0;
+  const bouquetColor = DAFFODIL_COLORS[(safeIndex + colorOffset) % DAFFODIL_COLORS.length];
+  
+  return (
+    <div 
+      className={`stem-sway-container ${windClass}`}
+      style={{
+        position: "absolute",
+        bottom: bottomOffset,
+        left: leftOffset,
+        transformOrigin: "bottom center",
+        zIndex: zIndex,
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          transformOrigin: "bottom center",
+          transform: `scale(${scale}) rotate(${rotation})`,
+        }}
+      >
+        <div 
+          className="daffodil-stem grow-stem"
+          style={{
+            // @ts-expect-error custom property passing
+            "--tulip-color": bouquetColor.main,
+            "--tulip-color-light": bouquetColor.light,
+            "--tulip-color-dark": bouquetColor.dark,
+            "--trumpet-color": bouquetColor.trumpet,
+            "--trumpet-color-light": bouquetColor.trumpetLight,
+            "--trumpet-color-dark": bouquetColor.trumpetDark,
+          }}
+        >
+          <div className="daffodil-leaf daffodil-leaf-left grow-daffodil-leaf-left" />
+          <div className="daffodil-leaf daffodil-leaf-right grow-daffodil-leaf-right" />
+          
+          <div 
+            className={`blossom-sway-container ${blossomWindClass}`}
+            style={{
+              position: "absolute",
+              top: "-84px",
+              left: "calc(50% - 40px)",
+              transformOrigin: "bottom center",
+              zIndex: 5,
+            }}
+          >
+            <div className="daffodil-blossom grow-blossom" style={{ position: "relative", width: "100%", height: "100%" }}>
+              <div className="daffodil-receptacle" />
+              {/* 6 outer petals (perianth) rotated 60 degrees each */}
+              {Array.from({ length: 6 }).map((_, i) => {
+                const rotateAngle = i * 60;
+                return (
+                  <div
+                    key={`petal-${i}`}
+                    className={`daffodil-petal ${isBlooming ? "open-daffodil-petal" : ""}`}
+                    style={{
+                      transform: `rotate(${rotateAngle}deg) translateY(-14px)`,
+                    }}
+                  />
+                );
+              })}
+              
+              {/* Central Trumpet (Corona) */}
+              <div className={`daffodil-trumpet ${isBlooming ? "open-daffodil-trumpet" : ""}`}>
+                <div className="daffodil-trumpet-rim" />
+                <div className="daffodil-stamens">
+                  {Array.from({ length: 3 }).map((_, i) => (
+                    <div
+                      key={`stamen-${i}`}
+                      className="daffodil-stamen"
+                      style={{
+                        transform: `rotate(${i * 120}deg) translateY(-4px)`,
+                      }}
+                    >
+                      <div className="daffodil-anther" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
@@ -838,9 +1048,11 @@ export default function Home() {
   const [isShaking, setIsShaking] = useState(false);
 
   // Flower Config state
-  const [flowerType, setFlowerType] = useState<"tulip" | "sunflower" | "rose" | "lily" | "mixed">("tulip");
+  const [flowerType, setFlowerType] = useState<"tulip" | "sunflower" | "rose" | "lily" | "daffodil" | "mixed">("tulip");
   const [activePart, setActivePart] = useState<"blossom" | "leaves" | "stem" | "pot" | null>(null);
-  const [activeColor, setActiveColor] = useState<typeof TULIP_COLORS[0] | typeof SUNFLOWER_COLORS[0] | typeof ROSE_COLORS[0] | typeof LILY_COLORS[0]>(TULIP_COLORS[0]);
+  const [activeColor, setActiveColor] = useState<
+    typeof TULIP_COLORS[0] | typeof SUNFLOWER_COLORS[0] | typeof ROSE_COLORS[0] | typeof LILY_COLORS[0] | typeof DAFFODIL_COLORS[0]
+  >(TULIP_COLORS[0]);
   const [themeMode, setThemeMode] = useState<"sunset" | "day" | "night">("sunset");
   const [windSpeed, setWindSpeed] = useState<"calm" | "gentle" | "strong">("gentle");
   const [viewMode, setViewMode] = useState<"single" | "bouquet">("single");
@@ -885,6 +1097,8 @@ export default function Home() {
       setActiveColor(ROSE_COLORS[0]);
     } else if (flowerType === "lily") {
       setActiveColor(LILY_COLORS[0]);
+    } else if (flowerType === "daffodil") {
+      setActiveColor(DAFFODIL_COLORS[0]);
     } else {
       setActiveColor(TULIP_COLORS[0]);
     }
@@ -906,6 +1120,16 @@ export default function Home() {
       root.style.setProperty("--tulip-color", activeColor.main);
       root.style.setProperty("--tulip-color-light", activeColor.light);
       root.style.setProperty("--tulip-color-dark", activeColor.dark);
+      
+      if ("trumpet" in activeColor) {
+        root.style.setProperty("--trumpet-color", activeColor.trumpet);
+        root.style.setProperty("--trumpet-color-light", activeColor.trumpetLight);
+        root.style.setProperty("--trumpet-color-dark", activeColor.trumpetDark);
+      } else {
+        root.style.setProperty("--trumpet-color", activeColor.main);
+        root.style.setProperty("--trumpet-color-light", activeColor.light);
+        root.style.setProperty("--trumpet-color-dark", activeColor.dark);
+      }
     }
   }, [activeColor]);
 
@@ -913,7 +1137,7 @@ export default function Home() {
   const handleAuthSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const answer = authInput.trim().toLowerCase();
-    const allowedAnswers = ["black", "master", "back", "red", "crimson"];
+    const allowedAnswers = ["2001", "formal"];
     
     if (allowedAnswers.includes(answer)) {
       if (typeof window !== "undefined") {
@@ -921,7 +1145,7 @@ export default function Home() {
       }
       setIsUnlocked(true);
     } else {
-      setAuthError("Incorrect answer. Try Zaid's favorite color or nickname!");
+      setAuthError("Incorrect answer. Try Zaid's DOB year or preferred outfit!");
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
     }
@@ -986,13 +1210,96 @@ export default function Home() {
 
   const isTulipBlooming = themeMode !== "night";
   const isLilyBlooming = themeMode !== "night";
+  const isDaffodilBlooming = themeMode !== "night";
   
+  // Security Verification Screen
+  if (!isUnlocked) {
+    return (
+      <div className="min-h-screen w-full flex flex-col items-center justify-center bg-[#07040d] text-slate-100 p-6 relative overflow-hidden">
+        {/* Animated background lights */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-indigo-900/30 filter blur-[80px] animate-pulse pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-purple-900/20 filter blur-[80px] animate-pulse pointer-events-none" style={{ animationDelay: "2s" }} />
+
+        {/* Floating background petals */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-2xl opacity-10 pointer-events-none animate-bounce"
+            style={{
+              left: `${15 + Math.random() * 70}%`,
+              top: `${10 + Math.random() * 80}%`,
+              animationDelay: `${i * 0.7}s`,
+              animationDuration: `${3 + Math.random() * 4}s`,
+            }}
+          >
+            🌷
+          </div>
+        ))}
+
+        {/* Security Challenge Card */}
+        <div className={`w-full max-w-md p-8 rounded-2xl glass-panel border border-white/10 z-10 transition-all duration-300 ${
+          isShaking ? "animate-shake border-rose-500/40" : ""
+        }`}>
+          <div className="text-center mb-6">
+            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 mx-auto mb-4 animate-bounce">
+              <span className="text-4xl">🌷</span>
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight bg-gradient-to-r from-amber-200 via-white to-pink-200 bg-clip-text text-transparent">
+              Toolip Sanctuary
+            </h1>
+            <p className="text-xs text-slate-400 font-mono mt-1">
+              authentication required
+            </p>
+          </div>
+
+          <form onSubmit={handleAuthSubmit} className="space-y-5">
+            <div>
+              <label className="block text-xs font-semibold uppercase tracking-wider font-mono text-slate-300 mb-2.5">
+                What is Zaid's DOB year or what outfit does he like?
+              </label>
+              <input
+                type="text"
+                value={authInput}
+                onChange={(e) => {
+                  setAuthInput(e.target.value);
+                  setAuthError("");
+                }}
+                placeholder="Enter answer..."
+                className="w-full py-3 px-4 rounded-xl bg-black/40 border border-white/10 text-white placeholder-slate-500 font-semibold focus:outline-none focus:border-indigo-500/80 focus:ring-1 focus:ring-indigo-500/80 transition-all duration-300"
+                autoFocus
+              />
+            </div>
+
+            {authError && (
+              <p className="text-xs text-rose-400 font-semibold leading-relaxed text-center bg-rose-500/10 border border-rose-500/20 py-2 px-3 rounded-lg animate-fade-in">
+                ⚠️ {authError}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              className="w-full py-3 px-4 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-bold transition-all duration-300 shadow-lg shadow-white/5 flex items-center justify-center gap-2"
+            >
+              <span>Unlock Garden</span>
+              <span>🔑</span>
+            </button>
+          </form>
+
+          <div className="text-[10px] text-center text-slate-500 font-mono mt-6 border-t border-white/5 pt-4">
+            🔒 Security Gate &bull; Small/capital letters and digits accepted
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Dynamic selectors based on flower species type
   const activeEncyclopedia = 
     flowerType === "tulip" ? TULIP_PARTS : 
     flowerType === "sunflower" ? SUNFLOWER_PARTS : 
     flowerType === "rose" ? ROSE_PARTS : 
     flowerType === "lily" ? LILY_PARTS :
+    flowerType === "daffodil" ? DAFFODIL_PARTS :
     MIXED_PARTS;
     
   const colorsList = 
@@ -1000,6 +1307,7 @@ export default function Home() {
     flowerType === "sunflower" ? SUNFLOWER_COLORS : 
     flowerType === "rose" ? ROSE_COLORS : 
     flowerType === "lily" ? LILY_COLORS :
+    flowerType === "daffodil" ? DAFFODIL_COLORS :
     TULIP_COLORS;
 
   return (
@@ -1010,7 +1318,7 @@ export default function Home() {
       <header className="w-full max-w-7xl mx-auto px-6 py-5 flex items-center justify-between z-30">
         <div className="flex items-center gap-3">
           <span className="text-3xl">
-            {flowerType === "tulip" ? "🌷" : flowerType === "sunflower" ? "🌻" : flowerType === "rose" ? "🌹" : flowerType === "lily" ? "⚜️" : "💐"}
+            {flowerType === "tulip" ? "🌷" : flowerType === "sunflower" ? "🌻" : flowerType === "rose" ? "🌹" : flowerType === "lily" ? "⚜️" : flowerType === "daffodil" ? "🌼" : "💐"}
           </span>
           <div>
             <h1 className={`text-2xl font-bold tracking-tight ${themeMode === 'day' ? 'text-amber-950' : 'text-white'}`}>
@@ -1171,35 +1479,47 @@ export default function Home() {
                   </>
                 )}
 
+                {flowerType === "daffodil" && (
+                  <>
+                    <BouquetDaffodil leftOffset="calc(50% - 10px)" rotation="-4deg" scale={0.85} zIndex={2} colorOffset={5} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
+                    <BouquetDaffodil leftOffset="calc(50% - 46px)" rotation="-20deg" scale={0.8} zIndex={4} colorOffset={3} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% - 25px)" rotation="-10deg" scale={0.9} zIndex={5} colorOffset={1} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% + 15px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={2} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% + 35px)" rotation="20deg" scale={0.8} zIndex={4} colorOffset={4} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                  </>
+                )}
+
                 {flowerType === "mixed" && (
                   <>
-                    {/* 5 Sunflowers */}
-                    <BouquetSunflower leftOffset="calc(50% - 70px)" rotation="-28deg" scale={0.75} zIndex={2} colorOffset={5} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
-                    <BouquetSunflower leftOffset="calc(50% - 35px)" rotation="-14deg" scale={0.8} zIndex={2} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetSunflower leftOffset="calc(50%)" rotation="0deg" scale={0.85} zIndex={2} colorOffset={1} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetSunflower leftOffset="calc(50% + 35px)" rotation="14deg" scale={0.8} zIndex={2} colorOffset={2} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetSunflower leftOffset="calc(50% + 70px)" rotation="28deg" scale={0.75} zIndex={2} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    {/* 4 Sunflowers */}
+                    <BouquetSunflower leftOffset="calc(50% - 60px)" rotation="-24deg" scale={0.75} zIndex={2} colorOffset={5} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} bottomOffset="120px" />
+                    <BouquetSunflower leftOffset="calc(50% - 20px)" rotation="-8deg" scale={0.8} zIndex={2} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetSunflower leftOffset="calc(50% + 20px)" rotation="8deg" scale={0.8} zIndex={2} colorOffset={1} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetSunflower leftOffset="calc(50% + 60px)" rotation="24deg" scale={0.75} zIndex={2} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
 
-                    {/* 5 Lilies */}
-                    <BouquetLily leftOffset="calc(50% - 55px)" rotation="-22deg" scale={0.8} zIndex={3} colorOffset={1} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetLily leftOffset="calc(50% - 20px)" rotation="-8deg" scale={0.85} zIndex={3} colorOffset={2} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetLily leftOffset="calc(50% + 20px)" rotation="8deg" scale={0.85} zIndex={3} colorOffset={3} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetLily leftOffset="calc(50% + 55px)" rotation="22deg" scale={0.8} zIndex={3} colorOffset={4} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetLily leftOffset="calc(50% - 85px)" rotation="-35deg" scale={0.7} zIndex={3} colorOffset={5} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    {/* 4 Lilies */}
+                    <BouquetLily leftOffset="calc(50% - 45px)" rotation="-18deg" scale={0.8} zIndex={3} colorOffset={1} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetLily leftOffset="calc(50% - 15px)" rotation="-6deg" scale={0.85} zIndex={3} colorOffset={2} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetLily leftOffset="calc(50% + 15px)" rotation="6deg" scale={0.85} zIndex={3} colorOffset={3} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetLily leftOffset="calc(50% + 45px)" rotation="18deg" scale={0.8} zIndex={3} colorOffset={4} isBlooming={isLilyBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
 
-                    {/* 5 Tulips */}
-                    <BouquetTulip leftOffset="calc(50% - 45px)" rotation="-18deg" scale={0.85} zIndex={4} colorOffset={2} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    {/* 4 Tulips */}
+                    <BouquetTulip leftOffset="calc(50% - 30px)" rotation="-12deg" scale={0.85} zIndex={4} colorOffset={2} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
                     <BouquetTulip leftOffset="calc(50% - 10px)" rotation="-4deg" scale={0.9} zIndex={4} colorOffset={3} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
                     <BouquetTulip leftOffset="calc(50% + 10px)" rotation="4deg" scale={0.9} zIndex={4} colorOffset={1} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetTulip leftOffset="calc(50% + 45px)" rotation="18deg" scale={0.85} zIndex={4} colorOffset={4} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetTulip leftOffset="calc(50% + 85px)" rotation="35deg" scale={0.7} zIndex={4} colorOffset={5} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetTulip leftOffset="calc(50% + 30px)" rotation="12deg" scale={0.85} zIndex={4} colorOffset={4} isBlooming={isTulipBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
 
-                    {/* 5 Roses */}
-                    <BouquetRose leftOffset="calc(50% - 30px)" rotation="-12deg" scale={0.9} zIndex={5} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    {/* 4 Daffodils */}
+                    <BouquetDaffodil leftOffset="calc(50% - 50px)" rotation="-22deg" scale={0.85} zIndex={4} colorOffset={1} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% - 15px)" rotation="-6deg" scale={0.9} zIndex={4} colorOffset={2} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% + 15px)" rotation="6deg" scale={0.9} zIndex={4} colorOffset={3} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetDaffodil leftOffset="calc(50% + 50px)" rotation="22deg" scale={0.85} zIndex={4} colorOffset={4} isBlooming={isDaffodilBlooming} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+
+                    {/* 4 Roses */}
+                    <BouquetRose leftOffset="calc(50% - 25px)" rotation="-10deg" scale={0.9} zIndex={5} colorOffset={3} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
                     <BouquetRose leftOffset="calc(50% - 5px)" rotation="-2deg" scale={0.95} zIndex={5} colorOffset={1} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetRose leftOffset="calc(50% + 25px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={2} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetRose leftOffset="calc(50% - 60px)" rotation="-25deg" scale={0.8} zIndex={5} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
-                    <BouquetRose leftOffset="calc(50% + 60px)" rotation="25deg" scale={0.8} zIndex={5} colorOffset={5} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetRose leftOffset="calc(50% + 5px)" rotation="2deg" scale={0.95} zIndex={5} colorOffset={2} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
+                    <BouquetRose leftOffset="calc(50% + 25px)" rotation="10deg" scale={0.9} zIndex={5} colorOffset={4} windClass={getWindClass("wind-sway")} blossomWindClass={getBlossomWindClass()} activeColor={activeColor} />
                   </>
                 )}
               </>
@@ -1538,6 +1858,98 @@ export default function Home() {
               </div>
             )}
 
+            {flowerType === "daffodil" && (
+              <div 
+                className={`stem-sway-container ${getWindClass("wind-sway")}`}
+                style={{
+                  position: "absolute",
+                  bottom: "105px",
+                  left: "calc(50% - 4px)",
+                  transformOrigin: "bottom center",
+                  zIndex: 6,
+                }}
+              >
+                <div style={{ width: "100%", height: "100%", transformOrigin: "bottom center" }}>
+                  <div
+                    className="daffodil-stem grow-stem toolip-trigger"
+                    onMouseEnter={() => setActivePart("stem")}
+                    onClick={() => setActivePart("stem")}
+                  >
+                    <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
+
+                    <div 
+                      className="daffodil-leaf daffodil-leaf-left grow-daffodil-leaf-left toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 left-1/3" />
+                    </div>
+
+                    <div 
+                      className="daffodil-leaf daffodil-leaf-right grow-daffodil-leaf-right toolip-trigger"
+                      onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                      onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }}
+                    >
+                      <div className="glow-indicator top-1/3 right-1/3" />
+                    </div>
+
+                    <div 
+                      className={`blossom-sway-container ${getBlossomWindClass()}`}
+                      style={{
+                        position: "absolute",
+                        top: "-84px",
+                        left: "calc(50% - 40px)",
+                        transformOrigin: "bottom center",
+                        zIndex: 5,
+                      }}
+                    >
+                      <div 
+                        className="daffodil-blossom grow-blossom toolip-trigger"
+                        onMouseEnter={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                        onClick={(e) => { e.stopPropagation(); setActivePart("blossom"); }}
+                        style={{ position: "relative", width: "100%", height: "100%" }}
+                      >
+                        <div className="daffodil-receptacle" />
+                        {/* 6 outer petals (perianth) rotated 60 degrees each */}
+                        {Array.from({ length: 6 }).map((_, i) => {
+                          const rotateAngle = i * 60;
+                          return (
+                            <div
+                              key={`petal-${i}`}
+                              className={`daffodil-petal ${isDaffodilBlooming ? "open-daffodil-petal" : ""}`}
+                              style={{
+                                transform: `rotate(${rotateAngle}deg) translateY(-14px)`,
+                              }}
+                            />
+                          );
+                        })}
+
+                        {/* Central Trumpet (Corona) */}
+                        <div className={`daffodil-trumpet ${isDaffodilBlooming ? "open-daffodil-trumpet" : ""}`}>
+                          <div className="daffodil-trumpet-rim" />
+                          <div className="daffodil-stamens">
+                            {Array.from({ length: 3 }).map((_, i) => (
+                              <div
+                                key={`stamen-${i}`}
+                                className="daffodil-stamen"
+                                style={{
+                                  transform: `rotate(${i * 120}deg) translateY(-4px)`,
+                                }}
+                              >
+                                <div className="daffodil-anther" />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {flowerType === "mixed" && (
               <>
                 {/* Tulip side-by-side */}
@@ -1546,7 +1958,7 @@ export default function Home() {
                   style={{
                     position: "absolute",
                     bottom: "105px",
-                    left: "calc(50% - 70px)",
+                    left: "calc(50% - 90px)",
                     transformOrigin: "bottom center",
                     zIndex: 6,
                     transform: "scale(0.72)",
@@ -1584,7 +1996,7 @@ export default function Home() {
                   style={{
                     position: "absolute",
                     bottom: "105px",
-                    left: "calc(50% - 25px)",
+                    left: "calc(50% - 45px)",
                     transformOrigin: "bottom center",
                     zIndex: 5,
                     transform: "scale(0.72)",
@@ -1623,13 +2035,59 @@ export default function Home() {
                   </div>
                 </div>
 
+                {/* Daffodil side-by-side */}
+                <div 
+                  className={`stem-sway-container ${getWindClass("wind-sway")}`}
+                  style={{
+                    position: "absolute",
+                    bottom: "105px",
+                    left: "calc(50% - 0px)",
+                    transformOrigin: "bottom center",
+                    zIndex: 6,
+                    transform: "scale(0.72)",
+                  }}
+                >
+                  <div style={{ width: "100%", height: "100%", transformOrigin: "bottom center" }}>
+                    <div
+                      className="daffodil-stem grow-stem toolip-trigger"
+                      onMouseEnter={() => setActivePart("stem")}
+                      onClick={() => setActivePart("stem")}
+                    >
+                      <div className="glow-indicator top-1/2 left-1/2 -translate-x-1/2" />
+                      <div className="daffodil-leaf daffodil-leaf-left grow-daffodil-leaf-left toolip-trigger" onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }} onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }} />
+                      <div className="daffodil-leaf daffodil-leaf-right grow-daffodil-leaf-right toolip-trigger" onMouseEnter={(e) => { e.stopPropagation(); setActivePart("leaves"); }} onClick={(e) => { e.stopPropagation(); setActivePart("leaves"); }} />
+                      
+                      <div className={`blossom-sway-container ${getBlossomWindClass()}`} style={{ position: "absolute", top: "-84px", left: "calc(50% - 40px)", transformOrigin: "bottom center", zIndex: 5 }}>
+                        <div className="daffodil-blossom grow-blossom toolip-trigger" onMouseEnter={(e) => { e.stopPropagation(); setActivePart("blossom"); }} onClick={(e) => { e.stopPropagation(); setActivePart("blossom"); }} style={{ position: "relative", width: "100%", height: "100%" }}>
+                          <div className="daffodil-receptacle" />
+                          {Array.from({ length: 6 }).map((_, i) => {
+                            const rotateAngle = i * 60;
+                            return (
+                              <div key={`petal-${i}`} className="daffodil-petal" style={{ transform: `rotate(${rotateAngle}deg) translateY(-14px)` }} />
+                            );
+                          })}
+                          <div className="daffodil-trumpet">
+                            <div className="daffodil-trumpet-rim" />
+                            <div className="daffodil-stamens">
+                              {Array.from({ length: 3 }).map((_, i) => (
+                                <div key={`stamen-${i}`} className="daffodil-stamen" style={{ transform: `rotate(${i * 120}deg) translateY(-4px)` }}><div className="daffodil-anther" /></div>
+                              ))}
+                            </div>
+                          </div>
+                          <div className="glow-indicator top-6 left-1/2 -translate-x-1/2" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Rose side-by-side */}
                 <div 
                   className={`stem-sway-container ${getWindClass("wind-sway")}`}
                   style={{
                     position: "absolute",
                     bottom: "105px",
-                    left: "calc(50% + 20px)",
+                    left: "calc(50% + 45px)",
                     transformOrigin: "bottom center",
                     zIndex: 6,
                     transform: "scale(0.72)",
@@ -1672,7 +2130,7 @@ export default function Home() {
                   style={{
                     position: "absolute",
                     bottom: "105px",
-                    left: "calc(50% + 65px)",
+                    left: "calc(50% + 90px)",
                     transformOrigin: "bottom center",
                     zIndex: 5,
                     transform: "scale(0.72)",
@@ -1771,10 +2229,10 @@ export default function Home() {
             {/* Flower Species Toggle */}
             <div className="mb-5">
               <label className="text-xs font-semibold opacity-70 block mb-2 uppercase tracking-wider font-mono">Flower Species</label>
-              <div className="grid grid-cols-5 gap-1">
+              <div className="grid grid-cols-6 gap-1">
                 <button
                   onClick={() => setFlowerType("tulip")}
-                  className={`py-2.5 px-1 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
+                  className={`py-2.5 px-0.5 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
                     flowerType === "tulip"
                       ? themeMode === "day"
                         ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
@@ -1788,7 +2246,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setFlowerType("sunflower")}
-                  className={`py-2.5 px-1 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
+                  className={`py-2.5 px-0.5 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
                     flowerType === "sunflower"
                       ? themeMode === "day"
                         ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
@@ -1802,7 +2260,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setFlowerType("rose")}
-                  className={`py-2.5 px-1 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
+                  className={`py-2.5 px-0.5 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
                     flowerType === "rose"
                       ? themeMode === "day"
                         ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
@@ -1816,7 +2274,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setFlowerType("lily")}
-                  className={`py-2.5 px-1 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
+                  className={`py-2.5 px-0.5 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
                     flowerType === "lily"
                       ? themeMode === "day"
                         ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
@@ -1827,6 +2285,20 @@ export default function Home() {
                   }`}
                 >
                   ⚜️ Lily
+                </button>
+                <button
+                  onClick={() => setFlowerType("daffodil")}
+                  className={`py-2.5 px-0.5 rounded-xl text-[10px] font-bold border transition-all duration-300 ${
+                    flowerType === "daffodil"
+                      ? themeMode === "day"
+                        ? "bg-amber-800 text-amber-100 border-amber-900 shadow-md"
+                        : "bg-white text-slate-900 border-white shadow-lg"
+                      : themeMode === "day"
+                        ? "bg-amber-100/50 hover:bg-amber-100 text-amber-900 border-amber-200"
+                        : "bg-white/5 hover:bg-white/10 border-white/10 text-slate-300"
+                  }`}
+                >
+                  🌼 Daff.
                 </button>
                 <button
                   onClick={() => setFlowerType("mixed")}
@@ -2028,10 +2500,17 @@ export default function Home() {
             ) : (
               <div className="flex flex-col items-center justify-center text-center py-6 my-auto opacity-75 animate-fade-in">
                 <span className="text-3xl mb-2 animate-bounce">
-                  {flowerType === "tulip" ? "🐝" : flowerType === "sunflower" ? "🌻" : flowerType === "rose" ? "🦋" : "🧚"}
+                  {flowerType === "tulip" ? "🐝" : flowerType === "sunflower" ? "🌻" : flowerType === "rose" ? "🦋" : flowerType === "lily" ? "🧚" : flowerType === "daffodil" ? "⭐" : "💐"}
                 </span>
                 <h3 className="font-bold text-sm mb-1">
-                  Hover over the {flowerType === "tulip" ? "Tulip" : flowerType === "sunflower" ? "Sunflower" : flowerType === "rose" ? "Rose" : "Lily"} components
+                  Hover over the {
+                    flowerType === "tulip" ? "Tulip" : 
+                    flowerType === "sunflower" ? "Sunflower" : 
+                    flowerType === "rose" ? "Rose" : 
+                    flowerType === "lily" ? "Lily" : 
+                    flowerType === "daffodil" ? "Daffodil" : 
+                    "Mixed Bouquet"
+                  } components
                 </h3>
                 <p className="text-xs max-w-[280px]">
                   Explore different anatomical parts (Petals, Leaves, Stem, or Pot) to unlock their botanical secrets and history!

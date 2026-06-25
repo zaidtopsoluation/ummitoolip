@@ -6,6 +6,9 @@
   --tulip-color: #dc2626;
   --tulip-color-light: #f87171;
   --tulip-color-dark: #7f1d1d;
+  --trumpet-color: #facc15;
+  --trumpet-color-light: #fef08a;
+  --trumpet-color-dark: #ca8a04;
 }
 
 /* Custom Theme Config for Tailwind v4 */
@@ -883,6 +886,166 @@ body {
 
 /* Lily Receptacle Base */
 .lily-receptacle {
+  width: 16px;
+  height: 12px;
+  background: linear-gradient(to bottom, #15803d, #22c55e);
+  border-radius: 50% 50% 0 0;
+  position: absolute;
+  bottom: -6px;
+  left: calc(50% - 8px);
+  z-index: 3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Daffodil Specific Styles */
+.daffodil-stem {
+  width: 8px;
+  height: 280px;
+  background: linear-gradient(to right, #4ade80, #15803d, #14532d);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  position: relative;
+}
+
+.daffodil-leaf {
+  position: absolute;
+  background: linear-gradient(135deg, #34d399 0%, #15803d 50%, #064e3b 100%);
+  z-index: 4;
+  opacity: 0;
+  box-shadow: inset -2px -2px 10px rgba(0,0,0,0.1), 2px 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.5s ease-in-out;
+}
+
+.daffodil-leaf-left {
+  width: 16px;
+  height: 150px;
+  bottom: 50px;
+  left: -12px;
+  border-radius: 100% 0 0 0 / 100% 0 0 0;
+  transform-origin: right bottom;
+}
+
+.daffodil-leaf-right {
+  width: 16px;
+  height: 135px;
+  bottom: 90px;
+  right: -12px;
+  border-radius: 0 100% 0 0 / 0 100% 0 0;
+  transform-origin: left bottom;
+}
+
+.grow-daffodil-leaf-left {
+  animation: grow-daffodil-leaf-left-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1s forwards;
+}
+
+.grow-daffodil-leaf-right {
+  animation: grow-daffodil-leaf-right-anim 2s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
+}
+
+@keyframes grow-daffodil-leaf-left-anim {
+  from {
+    transform: scale(0) rotate(20deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(-35deg);
+    opacity: 1;
+  }
+}
+
+@keyframes grow-daffodil-leaf-right-anim {
+  from {
+    transform: scale(0) rotate(-20deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(35deg);
+    opacity: 1;
+  }
+}
+
+/* Daffodil Petals (Star-shaped Perianth) */
+.daffodil-petal {
+  position: absolute;
+  bottom: 12px;
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 76px;
+  background: linear-gradient(to top, var(--tulip-color-dark) 0%, var(--tulip-color) 60%, var(--tulip-color-light) 100%);
+  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+  transform-origin: bottom center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 1px 1px 2px rgba(255,255,255,0.25), 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.open-daffodil-petal {
+  transform: scale(1.05) rotateX(-20deg) translateY(-4px);
+}
+
+/* Daffodil Trumpet (Corona) */
+.daffodil-trumpet {
+  position: absolute;
+  width: 32px;
+  height: 38px;
+  background: linear-gradient(to top, var(--trumpet-color-dark) 0%, var(--trumpet-color) 70%);
+  border-radius: 30% 30% 0 0;
+  bottom: 12px;
+  left: calc(50% - 16px);
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transform-origin: bottom center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.open-daffodil-trumpet {
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* Ruffled top rim of the trumpet */
+.daffodil-trumpet-rim {
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 38px;
+  height: 8px;
+  background: var(--trumpet-color-light);
+  border-radius: 50%;
+  border: 1px solid var(--trumpet-color-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Internal Stamens for Daffodil */
+.daffodil-stamens {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 20px;
+}
+
+.daffodil-stamen {
+  width: 1.5px;
+  height: 12px;
+  background: #a3e635;
+  margin: 0 2px;
+  position: relative;
+}
+
+.daffodil-anther {
+  position: absolute;
+  top: -2px;
+  left: -1.5px;
+  width: 4px;
+  height: 2px;
+  background: #eab308;
+  border-radius: 1px;
+}
+
+/* Receptacle Base */
+.daffodil-receptacle {
   width: 16px;
   height: 12px;
   background: linear-gradient(to bottom, #15803d, #22c55e);
