@@ -1240,7 +1240,7 @@ function BouquetDaffodil({
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [currentView, setCurrentView] = useState<"hub" | "flowers" | "puzzle">("hub");
+  const [currentView, setCurrentView] = useState<"hub" | "flowers" | "puzzle" | "calming">("hub");
   
   // Auth state
   const [authInput, setAuthInput] = useState("");
@@ -1560,7 +1560,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {/* Flower Sanctuary Card */}
             <div 
               onClick={() => setCurrentView("flowers")}
@@ -1606,7 +1606,7 @@ export default function Home() {
                 
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xs font-semibold uppercase tracking-wider font-mono text-pink-400">Realm II</span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-500/10 text-pink-300 border border-pink-500/20">Coming Soon</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-500/10 text-pink-300 border border-pink-500/20">Active</span>
                 </div>
                 
                 <h3 className="text-xl font-bold text-white mb-3">Puzzle Chamber</h3>
@@ -1617,6 +1617,36 @@ export default function Home() {
 
               <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
                 <span className="text-xs font-bold font-mono text-slate-400 group-hover:text-pink-300 transition-colors">ENTER CHAMBER</span>
+                <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
+              </div>
+            </div>
+
+            {/* Calming Sanctuary Card */}
+            <div 
+              onClick={() => setCurrentView("calming")}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between hover:bg-white/[0.05] hover:border-purple-500/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-purple-500/5"
+            >
+              {/* Card top gradient glow */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div>
+                <div className="w-16 h-16 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-4xl">🍃</span>
+                </div>
+                
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider font-mono text-purple-400">Realm III</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/20">Active</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">Calming Sanctuary</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Relax and find peace. Take a slow breath with our guided breathing visualizer designed to ease stress and tension.
+                </p>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs font-bold font-mono text-slate-400 group-hover:text-purple-300 transition-colors">ENTER SANCTUARY</span>
                 <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
               </div>
             </div>
@@ -1636,6 +1666,22 @@ export default function Home() {
   if (isUnlocked && currentView === "puzzle") {
     return (
       <SwappingPuzzle
+        onBackToMenu={() => setCurrentView("hub")}
+        onLock={() => {
+          if (typeof window !== "undefined") {
+            localStorage.removeItem("zaid_garden_unlocked");
+          }
+          setIsUnlocked(false);
+          setCurrentView("hub");
+        }}
+      />
+    );
+  }
+
+  // Calming Sanctuary page
+  if (isUnlocked && currentView === "calming") {
+    return (
+      <BreathingSpace
         onBackToMenu={() => setCurrentView("hub")}
         onLock={() => {
           if (typeof window !== "undefined") {
