@@ -16,6 +16,7 @@ export default function SwappingPuzzle({ onBackToMenu, onLock }: SwappingPuzzleP
   const [puzzleMoves, setPuzzleMoves] = useState<number>(0);
   const [showTileNumbers, setShowTileNumbers] = useState<boolean>(false);
   const [showOriginalPreview, setShowOriginalPreview] = useState<boolean>(false);
+  const [puzzleImage, setPuzzleImage] = useState<string>("/tolip.png");
 
   // Initialize and Shuffle Puzzle using Fisher-Yates shuffle
   const initPuzzle = (size: number) => {
@@ -118,7 +119,7 @@ export default function SwappingPuzzle({ onBackToMenu, onLock }: SwappingPuzzleP
               Puzzle Chamber
             </h1>
             <p className="text-[10px] text-indigo-300/60 font-mono tracking-widest uppercase">
-              zaid's sliding matrix challenge
+              {puzzleImage === "/zaid.png" ? "zaid's" : "tolip's"} sliding matrix challenge
             </p>
           </div>
         </div>
@@ -153,8 +154,36 @@ export default function SwappingPuzzle({ onBackToMenu, onLock }: SwappingPuzzleP
                 Image Swapping Puzzle
               </h2>
               <p className="text-slate-400 text-xs mt-1.5 leading-relaxed">
-                Click a tile to select it, then click another tile to swap their positions. Swap the pieces until the portrait of Zaid is correctly reconstructed.
+                Click a tile to select it, then click another tile to swap their positions. Swap the pieces until the portrait of {puzzleImage === "/zaid.png" ? "Zaid" : "Tolip"} is correctly reconstructed.
               </p>
+            </div>
+
+            {/* Portrait Selectors */}
+            <div className="space-y-2 border-t border-white/5 pt-4">
+              <span className="text-[11px] font-semibold font-mono text-slate-300 block uppercase tracking-wider">
+                Select Portrait Image:
+              </span>
+              <div className="flex gap-2">
+                {[
+                  { name: "Tolip", url: "/tolip.png", label: "🌸 Tolip's Portrait" },
+                  { name: "Zaid", url: "/zaid.png", label: "🤴 Zaid's Portrait" },
+                ].map((item) => (
+                  <button
+                    key={item.url}
+                    onClick={() => {
+                      setPuzzleImage(item.url);
+                      initPuzzle(puzzleGridSize);
+                    }}
+                    className={`flex-1 py-2 px-3 rounded-xl text-xs font-bold border transition-all duration-300 ${
+                      puzzleImage === item.url
+                        ? "bg-pink-500/20 border-pink-500 text-pink-200 shadow-md shadow-pink-500/10"
+                        : "bg-white/5 border-white/10 hover:bg-white/10 text-slate-300"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* Grid Size Selectors */}
@@ -246,7 +275,7 @@ export default function SwappingPuzzle({ onBackToMenu, onLock }: SwappingPuzzleP
                 Goal Preview
               </span>
               <div className="w-32 aspect-[3/4] rounded-lg border border-white/20 overflow-hidden shadow-lg">
-                <img src="/zaid.png" alt="Target Goal" className="w-full h-full object-cover" />
+                <img src={puzzleImage} alt="Target Goal" className="w-full h-full object-cover" />
               </div>
             </div>
           )}
@@ -320,7 +349,7 @@ export default function SwappingPuzzle({ onBackToMenu, onLock }: SwappingPuzzleP
                           : "hover:scale-[0.98] active:scale-95 border border-white/[0.05]"
                     }`}
                     style={{
-                      backgroundImage: `url('/zaid.png')`,
+                      backgroundImage: `url('${puzzleImage}')`,
                       backgroundSize: `${puzzleGridSize * 100}% ${puzzleGridSize * 100}%`,
                       backgroundPosition: backgroundPosition,
                       backgroundRepeat: "no-repeat"
