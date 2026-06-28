@@ -11,7 +11,11 @@ const HEART_MESSAGES = [
   "I am so incredibly grateful to have you in my life.",
   "will you be my sanctuary, my peaceful place, and my greatest joy.",
   "I want you to make me fulfill all your wishes and need.",
-  "so will you take care of my mother ??"
+  "so will you take care of my mother ??",
+  "i love you ❤️so much ",
+  "i love you ❤️so much ",
+  "i love you ❤️so much ",
+  "i love you ❤️so much ",
 ];
 
 export default function HeartJar() {
