@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef, useId } from "react";
 import SwappingPuzzle from "../components/SwappingPuzzle";
 import HeartJar from "../components/HeartJar";
 import BreathingSpace from "../components/BreathingSpace";
+import LoveLetterBox from "../components/LoveLetterBox";
+import MemoryLane from "../components/MemoryLane";
+import MelodyBox from "../components/MelodyBox";
 
 let globalShowButterfly = true;
 
@@ -1240,7 +1243,7 @@ function BouquetDaffodil({
 export default function Home() {
   const [mounted, setMounted] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState(false);
-  const [currentView, setCurrentView] = useState<"hub" | "flowers" | "puzzle" | "calming">("hub");
+  const [currentView, setCurrentView] = useState<"hub" | "flowers" | "puzzle" | "calming" | "letters" | "memories" | "melody">("hub");
   
   // Auth state
   const [authInput, setAuthInput] = useState("");
@@ -1611,7 +1614,7 @@ export default function Home() {
                 
                 <h3 className="text-xl font-bold text-white mb-3">Puzzle Chamber</h3>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Engage with Zaid's mind-bending puzzle challenges. Unravel complex patterns, decode messages, and unlock hidden secrets within the sanctuary walls.
+                  Engage with Zaid's mind-bending puzzle challenges. Unravel complex grid tiles, reconstruct photos, and unlock helper views.
                 </p>
               </div>
 
@@ -1650,6 +1653,93 @@ export default function Home() {
                 <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
               </div>
             </div>
+
+            {/* Love Letter Box Card */}
+            <div 
+              onClick={() => setCurrentView("letters")}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between hover:bg-white/[0.05] hover:border-pink-500/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-pink-500/5"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div>
+                <div className="w-16 h-16 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-4xl">📮</span>
+                </div>
+                
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider font-mono text-pink-400">Realm IV</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-pink-500/10 text-pink-300 border border-pink-500/20">Active</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">Love Letter Box</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Unseal romantic letters from Zaid protected by a digital wax seal. Write your own replies and save them in the outbox.
+                </p>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs font-bold font-mono text-slate-400 group-hover:text-pink-300 transition-colors">OPEN LETTERBOX</span>
+                <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
+              </div>
+            </div>
+
+            {/* Memory Lane Card */}
+            <div 
+              onClick={() => setCurrentView("memories")}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between hover:bg-white/[0.05] hover:border-indigo-500/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-indigo-500/5"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div>
+                <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-4xl">📷</span>
+                </div>
+                
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider font-mono text-indigo-400">Realm V</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">Active</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">Memory Lane</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Stroll through the history of your relationship. Flip through Polaroid captures of milestones and pin your future hopes together.
+                </p>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs font-bold font-mono text-slate-400 group-hover:text-indigo-300 transition-colors">EXPLORE MEMORIES</span>
+                <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
+              </div>
+            </div>
+
+            {/* Melody Box Card */}
+            <div 
+              onClick={() => setCurrentView("melody")}
+              className="group relative rounded-2xl border border-white/10 bg-white/[0.02] p-8 flex flex-col justify-between hover:bg-white/[0.05] hover:border-teal-500/30 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-teal-500/5"
+            >
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-teal-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              
+              <div>
+                <div className="w-16 h-16 rounded-2xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
+                  <span className="text-4xl">📻</span>
+                </div>
+                
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-wider font-mono text-teal-400">Realm VI</span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-500/10 text-teal-300 border border-teal-500/20">Active</span>
+                </div>
+                
+                <h3 className="text-xl font-bold text-white mb-3">Melody Box</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Spin soft, calming tracks on a retro record player. Adjust volumes and switch channels to set the perfect background atmosphere.
+                </p>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
+                <span className="text-xs font-bold font-mono text-slate-400 group-hover:text-teal-300 transition-colors">SPIN TUNES</span>
+                <span className="text-slate-400 group-hover:translate-x-2 transition-transform duration-300">➡️</span>
+              </div>
+            </div>
           </div>
         </main>
 
@@ -1682,6 +1772,54 @@ export default function Home() {
   if (isUnlocked && currentView === "calming") {
     return (
       <BreathingSpace
+        onBackToMenu={() => setCurrentView("hub")}
+        onLock={() => {
+          if (typeof window !== "undefined") {
+            localStorage.removeItem("zaid_garden_unlocked");
+          }
+          setIsUnlocked(false);
+          setCurrentView("hub");
+        }}
+      />
+    );
+  }
+
+  // Love Letter Box page
+  if (isUnlocked && currentView === "letters") {
+    return (
+      <LoveLetterBox
+        onBackToMenu={() => setCurrentView("hub")}
+        onLock={() => {
+          if (typeof window !== "undefined") {
+            localStorage.removeItem("zaid_garden_unlocked");
+          }
+          setIsUnlocked(false);
+          setCurrentView("hub");
+        }}
+      />
+    );
+  }
+
+  // Memory Lane page
+  if (isUnlocked && currentView === "memories") {
+    return (
+      <MemoryLane
+        onBackToMenu={() => setCurrentView("hub")}
+        onLock={() => {
+          if (typeof window !== "undefined") {
+            localStorage.removeItem("zaid_garden_unlocked");
+          }
+          setIsUnlocked(false);
+          setCurrentView("hub");
+        }}
+      />
+    );
+  }
+
+  // Melody Box page
+  if (isUnlocked && currentView === "melody") {
+    return (
+      <MelodyBox
         onBackToMenu={() => setCurrentView("hub")}
         onLock={() => {
           if (typeof window !== "undefined") {
