@@ -39,9 +39,18 @@ const PRELOADED_MILESTONES: Milestone[] = [
   },
   {
     id: 4,
-    date: "Sanctuary Launch",
+    date: "Sanctuary ",
     title: "Toolip Sanctuary",
     description: "I wanted to build a peaceful space just for you. A digital garden of CSS tulips, roses, and interactive widgets to make you smile whenever you need it.",
+    emoji: "🌷",
+    bgColor: "from-emerald-500/20 to-teal-500/20",
+  }
+  ,
+  {
+    id: 5,
+    date: "june 19 ,2026",
+    title: "I purpose you infront of God",
+    description: "I ask him to make you mine ,and my baby girl purpose for many time and i want to make you happy ,i want to make you mine forever",
     emoji: "🌷",
     bgColor: "from-emerald-500/20 to-teal-500/20",
   }
@@ -55,7 +64,7 @@ interface MemoryLaneProps {
 export default function MemoryLane({ onBackToMenu, onLock }: MemoryLaneProps) {
   const [milestones, setMilestones] = useState<Milestone[]>(PRELOADED_MILESTONES);
   const [selectedMilestone, setSelectedMilestone] = useState<Milestone | null>(null);
-  
+
   // Custom dream states
   const [isAddingDream, setIsAddingDream] = useState(false);
   const [dreamTitle, setDreamTitle] = useState("");
@@ -104,7 +113,7 @@ export default function MemoryLane({ onBackToMenu, onLock }: MemoryLaneProps) {
     localStorage.setItem("zaid_love_dreams", JSON.stringify(updatedCustom));
 
     setMilestones([...PRELOADED_MILESTONES, ...updatedCustom]);
-    
+
     // Clear and close
     setDreamTitle("");
     setDreamDate("");
@@ -161,7 +170,7 @@ export default function MemoryLane({ onBackToMenu, onLock }: MemoryLaneProps) {
 
       {/* Main Content */}
       <main className="flex-1 w-full max-w-6xl mx-auto px-6 py-10 z-20 flex flex-col items-center">
-        
+
         {/* Intro */}
         <div className="text-center mb-12 max-w-lg">
           <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-pink-500/10 text-pink-300 border border-pink-500/20 uppercase tracking-widest font-mono">
@@ -169,7 +178,7 @@ export default function MemoryLane({ onBackToMenu, onLock }: MemoryLaneProps) {
           </span>
           <h2 className="text-3xl font-extrabold text-white mt-3">Snapshots of Us</h2>
           <p className="text-xs text-slate-400 mt-2 leading-relaxed">
-            Hover over the Polaroids to adjust them, and click to read the sweet memories inside. 
+            Hover over the Polaroids to adjust them, and click to read the sweet memories inside.
             Click "Add a Future Dream" to add a milestone you want to achieve together!
           </p>
           <button
@@ -192,7 +201,7 @@ export default function MemoryLane({ onBackToMenu, onLock }: MemoryLaneProps) {
                 style={{ transform: `rotate(${rot}deg)` }}
               >
                 <div className="polaroid-tape" />
-                
+
                 {/* Photo portion */}
                 <div className={`polaroid-image-placeholder rounded flex flex-col items-center justify-center bg-gradient-to-br ${item.bgColor}`}>
                   <span className="text-5xl animate-pulse" style={{ animationDuration: "3s" }}>{item.emoji}</span>
